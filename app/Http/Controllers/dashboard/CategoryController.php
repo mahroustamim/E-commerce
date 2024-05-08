@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Http\Controllers\dashboard;
+
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Yajra\DataTables\Facades\Datatables;
+use Illuminate\Http\Request;
+use App\Traits\UploadImage;
+
+class CategoryController extends Controller
+{
+    use UploadImage;
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Category::query();
+            return  Datatables::of($query)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '';
+                        $actionBtn = '<a  data-toggle="modal" data-target="#edit" data-id="' .$row->id . '" data-name="' .$row->name . '" data-image="' .asset($row->image) . '"  class="edit btn btn-success btn-sm text-light">' . 'تعديل' . '</a> 
+                        <a data-toggle="modal" data-target="#delete" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm text-light" >حذف</a>';
+                        return $actionBtn;
+                })
+                ->addColumn('image', function($row){
+                    $photo = '<img src="' . asset($row->image) . '" style="max-width: 100px; height: 100px;">';
+                    return $photo;
+                })
+                ->rawColumns(['action', 'image'])
+                ->make(true);
+        }
+        return view('dashboard.categories.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|unique:categories',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+        ]);
+
+        $category = Category::create([
+            'name' => $request->name,
+            'image' => $request->image,
+        ]);
+
+        if ($request->file('image')) {
+            $oldPath = public_path($category->image);
+            $this->deleteFile($oldPath);
+            $category->update(['image' => $this->upload($request->image)]);
+        }
+        return redirect()->back()->with('success', 'تم الاضافة بنجاح');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back()->with('success', 'تم الحذف بنجاح');
+    }
+
+}

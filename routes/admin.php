@@ -1,0 +1,19 @@
+<?php
+
+use App\Http\Controllers\dashboard\CategoryController;
+use App\Http\Controllers\dashboard\IndexController;
+use App\Http\Controllers\dashboard\SettingController;
+use Illuminate\Support\Facades\Route;
+
+
+
+
+Route::get('home', [IndexController::class, 'index'])->name('home');
+
+Route::get('settings/index', [SettingController::class, 'index'])->name('settings.index');
+
+Route::post('settings/updateOrCreate', [SettingController::class, 'updateOrCreate'])->name('settings.updateOrCreate');
+
+Route::resource('categories', CategoryController::class);
+
+Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories.delete');
