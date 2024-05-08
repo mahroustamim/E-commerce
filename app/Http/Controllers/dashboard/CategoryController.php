@@ -4,9 +4,9 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Yajra\DataTables\Facades\Datatables;
-use Illuminate\Http\Request;
 use App\Traits\UploadImage;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\Datatables;
 
 class CategoryController extends Controller
 {
@@ -22,8 +22,8 @@ class CategoryController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn = '';
-                        $actionBtn = '<a  data-toggle="modal" data-target="#edit" data-id="' .$row->id . '" data-name="' .$row->name . '" data-image="' .asset($row->image) . '"  class="edit btn btn-success btn-sm text-light">' . 'تعديل' . '</a> 
-                        <a data-toggle="modal" data-target="#delete" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm text-light" >حذف</a>';
+                        $actionBtn = '<a  data-toggle="modal" data-target="#edit" data-id="' .$row->id . '" data-name="' .$row->name . '" data-image="' .asset($row->image) . '"  class="edit btn btn-success btn-sm text-light"><i class="fe fe-delete  fe-16"></i></a> 
+                        <a data-toggle="modal" data-target="#delete" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm text-light" ><i class="fe fe-edit  fe-16"></i></a>';
                         return $actionBtn;
                 })
                 ->addColumn('image', function($row){

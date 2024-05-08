@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
+            SettingsSeeder::class,
+            SizeSeeder::class,
+            ColorSeeder::class,
         ]);
         
         // \App\Models\User::factory(10)->create();

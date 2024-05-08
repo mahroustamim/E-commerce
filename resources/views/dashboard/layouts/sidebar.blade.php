@@ -96,7 +96,7 @@
        
         <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
-            <i class="fe fe-settings  fe-16"></i>
+            <i class="fe fe-grid  fe-16"></i>
             <span class="ml-3 item-text">الاقسام</span>
           </a>
         </li>
