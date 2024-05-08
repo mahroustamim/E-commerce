@@ -14,6 +14,10 @@ Route::get('settings/index', [SettingController::class, 'index'])->name('setting
 
 Route::post('settings/updateOrCreate', [SettingController::class, 'updateOrCreate'])->name('settings.updateOrCreate');
 
-Route::resource('categories', CategoryController::class);
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
 
 Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+
+Route::put('categories/update', [CategoryController::class, 'update'])->name('categories.update');

@@ -122,7 +122,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('dashboard.categories.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
         
