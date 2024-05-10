@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('size_id');
-            $table->integer('quantity');
-            $table->integer('discount');
-            $table->enum('status', ['active', 'not active'])->default('active');
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->unsignedBigInteger('size_id')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('color_id')->references('id')->on('color')->onDelete('cascade');
             $table->foreign('size_id')->references('id')->on('size')->onDelete('cascade');
+
         });
     }
 
