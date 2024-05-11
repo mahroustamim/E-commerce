@@ -69,28 +69,19 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-credit-card fe-16"></i>
-            <span class="ml-3 item-text">Forms</span>
+            <i class="fe fe-shopping-cart fe-16"></i>
+            <span class="ml-3 item-text">المنتجات</span>
           </a>
           <ul class="collapse list-unstyled pl-4 w-100" id="forms">
+
             <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_elements.html"><span class="ml-1 item-text">Basic Elements</span></a>
+              <a class="nav-link pl-3" href="{{ route('dashboard.products.index') }}"><span class="ml-1 item-text">المنتجات</span></a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_advanced.html"><span class="ml-1 item-text">Advanced Elements</span></a>
+              <a class="nav-link pl-3" href="{{ route('dashboard.products.create') }}"><span class="ml-1 item-text">إضافة منتج</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_validation.html"><span class="ml-1 item-text">Validation</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_wizard.html"><span class="ml-1 item-text">Wizard</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_layouts.html"><span class="ml-1 item-text">Layouts</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./form_upload.html"><span class="ml-1 item-text">File upload</span></a>
-            </li>
+            
           </ul>
         </li>
        

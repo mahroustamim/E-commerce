@@ -6,7 +6,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('AdminAsset/css/dataTables.bootstrap4.css') }}">
-<link href="https://unpkg.com/dropzone/dist/dropzone.css" rel="stylesheet">
+{{-- <link href="https://unpkg.com/dropzone/dist/dropzone.css" rel="stylesheet"> --}}
 
 </style>
 @endsection
@@ -189,7 +189,7 @@
 @section('scripts')
 <script src='{{ asset('AdminAsset/js/jquery.dataTables.min.js') }}'></script>
 <script src='{{ asset('AdminAsset/js/dataTables.bootstrap4.min.js') }}'></script>
-<script src="https://unpkg.com/dropzone/dist/dropzone.min.js"></script>
+{{-- <script src="https://unpkg.com/dropzone/dist/dropzone.min.js"></script> --}}
 
 
 <script>

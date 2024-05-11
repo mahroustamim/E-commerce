@@ -19,7 +19,8 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('quantity');
             $table->integer('discount');
-            $table->enum('status', ['موجود', 'غير موجود'])->default('موجود');
+            $table->enum('status', ['متوفر', 'غير متوفر'])->default('متوفر');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

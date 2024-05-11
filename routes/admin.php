@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\IndexController;
+use App\Http\Controllers\dashboard\ProductArchivesController;
+use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\dashboard\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,9 @@ Route::post('categories/store', [CategoryController::class, 'store'])->name('cat
 Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
 Route::put('categories/update', [CategoryController::class, 'update'])->name('categories.update');
+
+Route::resource('products', ProductController::class);
+
+Route::post('products/delete', [ProductController::class, 'delete'])->name('products.delete');
+
+Route::get('product/archives/index', [ProductArchivesController::class, 'index'])->name('product.archives.index');
