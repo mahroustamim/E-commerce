@@ -31,7 +31,7 @@ class ProductController extends Controller
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="' . route('dashboard.products.edit', $row->id) . '">تعديل</a>
                         <a class="dropdown-item" data-toggle="modal" href="#delete" data-id="' . $row->id . '" >حذف</a>
-                        <a class="dropdown-item" href="#">تغير الحالة</a>
+                        <a class="dropdown-item" data-toggle="modal" href="#status" data-id="' . $row->id . '" >تغير الحالة</a>
                         <a class="dropdown-item" href="#">إضافة صور</a>
                         <a class="dropdown-item" href="#">الالوان والاحجام</a>
                         <a class="dropdown-item" href="#"></a>
@@ -151,6 +151,19 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect()->back()->with('success', 'تم حذف المنتج بنجاح');
+    }
+
+    public function changStatus(Request $request)
+    {
+        $request->validate([
+            'status' => 'required',
+        ]);
+        $id = $request->id;
+        $product = Product::find($id);
+        $product->update([
+            'status' => $request->status,
+        ]);
+        return redirect()->back()->with('success', 'تم بنجاح');
     }
 
 }

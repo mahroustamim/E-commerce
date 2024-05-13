@@ -57,6 +57,47 @@
       {{-- ====================================================== --}}
       {{-- ====================================================== --}}
 
+        {{-- ====================  change status   ==================== --}}
+      <div class="modal fade" id="status" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">حذف منتج</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('dashboard.products.status') }}">
+                        @csrf
+    
+                        <p class="mb-2"><strong>تغير الحالة</strong></p>
+
+                        <input type="hidden" id="id" name="id" value="">
+                        
+                        <div class="custom-control custom-radio">
+                            <input name="status" type="radio" id="customRadio1" class="custom-control-input" value="متوفر">
+                            <label class="custom-control-label" for="customRadio1" >متوفر</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                            <input name="status" type="radio" id="customRadio2" class="custom-control-input" value="غير متوفر">
+                            <label class="custom-control-label" for="customRadio2">غير متوفر</label>
+                        </div>
+    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">إغلاق</button>
+                            <button type="submit" class="btn btn-danger mb-2">حفظ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+      {{-- ====================================================== --}}
+      {{-- ====================================================== --}}
+
 
       <div class="card shadow">
         <div class="card-body">
@@ -140,6 +181,20 @@ $(document).ready(function () {
         modal.find('.modal-body #id').val(id);
     });
 });
+
+//==============================================
+//===============  change status ===============
+
+$(document).ready(function () {
+    $('#status').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract info from data-* attributes
+
+        var modal = $(this);
+        modal.find('.modal-body #id').val(id);
+    });
+});
+
 
 //==============================================
 </script>
