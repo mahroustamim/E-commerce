@@ -28,4 +28,8 @@ Route::resource('products', ProductController::class);
 
 Route::post('products/delete', [ProductController::class, 'delete'])->name('products.delete');
 
-Route::get('product/archives/index', [ProductArchivesController::class, 'index'])->name('product.archives.index');
+Route::get('products/archives/index', [ProductArchivesController::class, 'index'])->name('products.archives.index');
+
+Route::post('products/archives/restore', [ProductArchivesController::class, 'restore'])->name('products.archives.restore');
+
+Route::delete('products/archives/destroy', [ProductArchivesController::class, 'destroy'])->name('products.archives.delete');

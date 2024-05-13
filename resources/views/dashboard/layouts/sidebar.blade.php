@@ -81,6 +81,10 @@
             <li class="nav-item">
               <a class="nav-link pl-3" href="{{ route('dashboard.products.create') }}"><span class="ml-1 item-text">إضافة منتج</span></a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link pl-3" href="{{ route('dashboard.products.archives.index') }}"><span class="ml-1 item-text">الارشيف</span></a>
+            </li>
             
           </ul>
         </li>

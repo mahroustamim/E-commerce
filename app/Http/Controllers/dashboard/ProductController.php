@@ -47,7 +47,7 @@ class ProductController extends Controller
                 $status = $row->status;
                 $badgeClass = 'success'; 
                 if($status == 'غير متوفر') {
-                    $badgeClass = 'danger';
+                    $badgeClass = 'warning';
                 }
                 return '<span class="badge badge-' . $badgeClass . '" style="font-size: 16px;">'. $status .'</span>';
             })

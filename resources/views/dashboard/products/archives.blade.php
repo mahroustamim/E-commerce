@@ -36,8 +36,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{ route('dashboard.products.delete') }}">
+                    <form method="post" action="{{ route('dashboard.products.archives.delete') }}">
                         @csrf
+                        @method('DELETE')
     
                         <input type="hidden" id="id" name="id" value="">
     
@@ -46,6 +47,37 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">إغلاق</button>
                             <button type="submit" class="btn btn-danger mb-2">حذف</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+      {{-- ====================================================== --}}
+      {{-- ====================================================== --}}
+      {{-- ====================  restore   ==================== --}}
+      <div class="modal fade" id="restore" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">إسترجاع المنتج</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('dashboard.products.archives.restore') }}">
+                        @csrf
+    
+                        <input type="hidden" id="id" name="id" value="">
+    
+                        <p class="s">هل أنت متأكد أنك تريد إسترجاع هذا المنتج</p>
+    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">إغلاق</button>
+                            <button type="submit" class="btn btn-success mb-2">إسترجاع</button>
                         </div>
                     </form>
                 </div>
@@ -107,7 +139,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('dashboard.products.index') }}",
+                url: "{{ route('dashboard.products.archives.index') }}",
                 type: 'GET',
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             },
@@ -133,6 +165,19 @@
 
 $(document).ready(function () {
     $('#delete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var id = button.data('id'); // Extract info from data-* attributes
+
+        var modal = $(this);
+        modal.find('.modal-body #id').val(id);
+    });
+});
+
+//==============================================
+    //==================  restore ===================
+
+$(document).ready(function () {
+    $('#restore').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var id = button.data('id'); // Extract info from data-* attributes
 
