@@ -35,3 +35,9 @@ Route::post('products/archives/restore', [ProductArchivesController::class, 'res
 Route::delete('products/archives/destroy', [ProductArchivesController::class, 'destroy'])->name('products.archives.delete');
 
 Route::post('products/status', [ProductController::class, 'changStatus'])->name('products.status');
+
+Route::get('products/images/index/{id}', [ProductController::class, 'images'])->name('products.images.index');
+
+Route::post('products/images/store/{id}', [ProductController::class, 'storeImages'])->name('products.images.store');
+
+Route::post('products/images/delete/{image}', [ProductController::class, 'deleteImages'])->name('products.images.delete');

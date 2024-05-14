@@ -16,7 +16,7 @@ trait UploadImage
 
     public function deleteFile($path)
     {
-        if (file_exists($path) && is_file($path)) {
+        if (file_exists($path)) {
             unlink($path);
         }
     }

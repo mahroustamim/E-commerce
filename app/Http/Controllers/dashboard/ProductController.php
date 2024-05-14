@@ -4,7 +4,9 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
+use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 use Laravel\Sail\Console\AddCommand;
 use PhpParser\Node\Stmt\Break_;
@@ -12,6 +14,7 @@ use Yajra\DataTables\Facades\Datatables;
 
 class ProductController extends Controller
 {
+    use UploadImage;
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +35,7 @@ class ProductController extends Controller
                         <a class="dropdown-item" href="' . route('dashboard.products.edit', $row->id) . '">تعديل</a>
                         <a class="dropdown-item" data-toggle="modal" href="#delete" data-id="' . $row->id . '" >حذف</a>
                         <a class="dropdown-item" data-toggle="modal" href="#status" data-id="' . $row->id . '" >تغير الحالة</a>
-                        <a class="dropdown-item" href="#">إضافة صور</a>
+                        <a class="dropdown-item" href="' . route('dashboard.products.images.index', $row->id) . '">إضافة صور</a>
                         <a class="dropdown-item" href="#">الالوان والاحجام</a>
                         <a class="dropdown-item" href="#"></a>
                     </div>
@@ -164,6 +167,46 @@ class ProductController extends Controller
             'status' => $request->status,
         ]);
         return redirect()->back()->with('success', 'تم بنجاح');
+    }
+
+    public function images($id)
+    {
+        $images = Image::where('product_id', $id)->get();
+        return view('dashboard.products.images', compact('id', 'images'));
+    }
+
+    public function storeImages(Request $request, $id)
+    {
+        $request->validate([
+            'name.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $images = $request->file('name');
+
+        if ($request->hasFile('name')) {
+
+            foreach($images as $image) {
+                $filename = $this->upload($image);
+
+                Image::create([
+
+                    'name' => $filename,
+                    'product_id' => $id,
+
+                ]);
+
+            }
+
+        }
+        return back()->with('success', 'تم تحميل الصور بنجاح');
+    }
+
+    public function deleteImages(Image $image)
+    {
+        $image->delete();
+        $path = public_path($image->name);
+        $this->deleteFile($path);
+        return back()->with('success', 'تم حذف الصورة بنجاح');
     }
 
 }
