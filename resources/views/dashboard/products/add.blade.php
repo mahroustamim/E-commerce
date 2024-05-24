@@ -75,9 +75,36 @@
                   </div>
 
                   <div class="form-group mb-3">
-                    <label for="example-textarea">الوصف</label>
-                    <textarea name="desc" class="form-control" id="example-textarea" rows="4"></textarea>
-                  </div>
+                    <label for="colors">الالوان</label>
+                    <select name="colors[]" id="colors" class="form-control select2" multiple="multiple">
+                            <option value="الاحمر">الاحمر</option>
+                            <option value="الازرق">الازرق</option>
+                            <option value="الاحضر">الاحضر</option>
+                            <option value="الاصفر">الاصفر</option>
+                            <option value="الرمادي">الرمادي</option>
+                            <option value="البرتقالي">البرتقالي</option>
+                            <option value="الزيتوني">الزيتوني</option>
+                    </select>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="sizes">الاحجام</label>
+                    <select name="sizes[]" id="sizes" class="form-control select2" multiple="multiple">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                            <option value="3XL">3XL</option>
+                            <option value="4XL">4XL</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="example-textarea">الوصف</label>
+                  <textarea name="desc" class="form-control" id="example-textarea" rows="4"></textarea>
+                </div>
 
                 </div>
             </div>

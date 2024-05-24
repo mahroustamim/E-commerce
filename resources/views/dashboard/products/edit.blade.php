@@ -75,9 +75,37 @@
                   </div>
 
                   <div class="form-group mb-3">
-                    <label for="example-textarea">الوصف</label>
-                    <textarea name="desc" class="form-control"  id="example-textarea" rows="4">{{ $product->desc }}</textarea>
-                  </div>
+                    <label for="colors">الالوان</label>
+                    <select name="colors[]" id="colors" class="form-control select2" multiple="multiple">
+                      <option value="الاحمر" {{ in_array('الاحمر', $product->colors) ? 'selected' : '' }}>الاحمر</option>
+                      <option value="الازرق" {{ in_array('الازرق', $product->colors) ? 'selected' : '' }}>الازرق</option>
+                      <option value="الاحضر" {{ in_array('الاحضر', $product->colors) ? 'selected' : '' }}>الاحضر</option>
+                      <option value="الاصفر" {{ in_array('الاصفر', $product->colors) ? 'selected' : '' }}>الاصفر</option>
+                      <option value="الرمادي" {{ in_array('الرمادي', $product->colors) ? 'selected' : '' }}>الرمادي</option>
+                      <option value="البرتقالي" {{ in_array('البرتقالي', $product->colors) ? 'selected' : '' }}>البرتقالي</option>
+                      <option value="الزيتوني" {{ in_array('الزيتوني', $product->colors) ? 'selected' : '' }}>الزيتوني</option>
+                    </select>
+                </div>
+            
+                <div class="form-group mb-3">
+                    <label for="sizes">الاحجام</label>
+                    <select name="sizes[]" id="sizes" class="form-control select2" multiple="multiple">
+                      <option value="XS" {{ in_array('XS', $product->sizes) ? 'selected' : '' }}>XS</option>
+                      <option value="S" {{ in_array('S', $product->sizes) ? 'selected' : '' }}>S</option>
+                      <option value="M" {{ in_array('M', $product->sizes) ? 'selected' : '' }}>M</option>
+                      <option value="L" {{ in_array('L', $product->sizes) ? 'selected' : '' }}>L</option>
+                      <option value="XL" {{ in_array('XL', $product->sizes) ? 'selected' : '' }}>XL</option>
+                      <option value="2XL" {{ in_array('2XL', $product->sizes) ? 'selected' : '' }}>2XL</option>
+                      <option value="3XL" {{ in_array('3XL', $product->sizes) ? 'selected' : '' }}>3XL</option>
+                      <option value="4XL" {{ in_array('4XL', $product->sizes) ? 'selected' : '' }}>4XL</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="example-textarea">الوصف</label>
+                  <textarea name="desc" class="form-control"  id="example-textarea" rows="4">{{ $product->desc }}</textarea>
+                </div>
+
 
                 </div>
             </div>

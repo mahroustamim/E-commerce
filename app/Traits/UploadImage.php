@@ -8,9 +8,9 @@ trait UploadImage
 {
     public function upload($file)
     {
-        $fileName = Str::uuid() . $file->getClientOriginalName(); 
+        $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();  
         $file->move(public_path('images'), $fileName);
-        $path = 'images\\' . $fileName;
+        $path = 'images/' . $fileName;
         return $path;
     }
 

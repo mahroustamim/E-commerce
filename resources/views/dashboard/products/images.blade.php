@@ -65,13 +65,18 @@
                                 <form action="{{ route('dashboard.products.images.delete', $image->id) }}" method="post">
                                     @csrf
 
-                                    <input type="submit" value="حذف"  class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                    <input type="submit" value="حذف"  class="btn btn-danger" onclick="return confirm('هل أنت متأكد؟')">
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
+             {{-- Pagination --}}
+             <div class="d-flex justify-content-center">
+                {!! $images->links() !!}
+            </div>
             
             </div>
           </div>

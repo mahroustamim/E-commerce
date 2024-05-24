@@ -11,18 +11,18 @@ class Product extends Model
     use softDeletes;
     use HasFactory;
     
-    protected $fillable = ['name', 'category_id', 'price', 'discount', 'quantity', 'desc', 'status'];
+    protected $fillable = ['name', 'category_id', 'price', 'discount', 'quantity', 'desc', 'status', 'colors', 'sizes'];
+
+    protected $casts = [
+        'colors' => 'array',
+        'sizes' => 'array',
+    ];
 
     public function rating()
     {
         return $this->hasOne(Rating::class);
     }
     
-    public function productDetails()
-    {
-        return $this->hasOne(ProductDetails::class);
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);

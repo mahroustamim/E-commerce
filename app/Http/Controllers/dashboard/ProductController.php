@@ -36,8 +36,6 @@ class ProductController extends Controller
                         <a class="dropdown-item" data-toggle="modal" href="#delete" data-id="' . $row->id . '" >حذف</a>
                         <a class="dropdown-item" data-toggle="modal" href="#status" data-id="' . $row->id . '" >تغير الحالة</a>
                         <a class="dropdown-item" href="' . route('dashboard.products.images.index', $row->id) . '">إضافة صور</a>
-                        <a class="dropdown-item" href="#">الالوان والاحجام</a>
-                        <a class="dropdown-item" href="#"></a>
                     </div>
                 </div>
                 ';
@@ -82,7 +80,9 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'desc' => 'required|string'
+            'desc' => 'required|string',
+            'colors' => 'required|array', 
+            'sizes' => 'required|array',
         ]);
         
         Product::create([
@@ -92,6 +92,8 @@ class ProductController extends Controller
             'discount' => $request->discount,
             'quantity' => $request->quantity,
             'desc' => $request->desc,
+            'colors' => $request->colors,
+            'sizes' => $request->sizes,
         ]);
 
         return redirect()->back()->with('success', 'تم إضافة المنتج بنجاح');
@@ -126,7 +128,9 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'desc' => 'required|string'
+            'desc' => 'required|string',
+            'colors' => 'required|array', 
+            'sizes' => 'required|array',
         ]);
 
         $produt->update([
@@ -136,6 +140,8 @@ class ProductController extends Controller
             'discount' => $request->discount,
             'quantity' => $request->quantity,
             'desc' => $request->desc,
+            'colors' => $request->colors,
+            'sizes' => $request->sizes,
         ]);
         return redirect()->back()->with('success', 'تم تعديل المنتج بنجاح');
     }
@@ -154,6 +160,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect()->back()->with('success', 'تم حذف المنتج بنجاح');
+        // return response()->json()
     }
 
     public function changStatus(Request $request)
@@ -169,44 +176,6 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'تم بنجاح');
     }
 
-    public function images($id)
-    {
-        $images = Image::where('product_id', $id)->get();
-        return view('dashboard.products.images', compact('id', 'images'));
-    }
-
-    public function storeImages(Request $request, $id)
-    {
-        $request->validate([
-            'name.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $images = $request->file('name');
-
-        if ($request->hasFile('name')) {
-
-            foreach($images as $image) {
-                $filename = $this->upload($image);
-
-                Image::create([
-
-                    'name' => $filename,
-                    'product_id' => $id,
-
-                ]);
-
-            }
-
-        }
-        return back()->with('success', 'تم تحميل الصور بنجاح');
-    }
-
-    public function deleteImages(Image $image)
-    {
-        $image->delete();
-        $path = public_path($image->name);
-        $this->deleteFile($path);
-        return back()->with('success', 'تم حذف الصورة بنجاح');
-    }
+    
 
 }

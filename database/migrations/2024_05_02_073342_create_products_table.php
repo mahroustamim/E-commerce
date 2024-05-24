@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('discount');
             $table->enum('status', ['متوفر', 'غير متوفر'])->default('متوفر');
+            $table->json('colors');
+            $table->json('sizes');
             $table->softDeletes();
             $table->timestamps();
 
