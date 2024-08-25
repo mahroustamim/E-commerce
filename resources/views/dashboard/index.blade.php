@@ -1,4 +1,4 @@
-@extends('dashbaord.layout.master')
+@extends('dashboard.layout.master')
 
 @section('title')
     welcome

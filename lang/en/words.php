@@ -8,7 +8,7 @@ return [
     'facebook' => 'facebook',
     'instagram' => 'instagram',
     'phone' => 'phone',
-    'email' => 'email',
+    // 'email' => 'email',
     'translations' => 'translations',
     'users' => 'Users',
     'user' => 'User',

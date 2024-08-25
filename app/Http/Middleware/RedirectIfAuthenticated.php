@@ -20,8 +20,19 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+            // if (Auth::guard($guard)->check()) {
+            //     return redirect(RouteServiceProvider::HOME);
+            // }
+
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+
+                $user = Auth::guard($guard)->user();
+
+                if ($user->status === 'admin' || $user->status === 'supervisor') {
+                    return redirect(RouteServiceProvider::ADMIN);  // Ensure these constants are defined in RouteServiceProvider
+                } else {
+                    return redirect(RouteServiceProvider::USER);   // Ensure these constants are defined in RouteServiceProvider
+                }
             }
         }
 

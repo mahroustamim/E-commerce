@@ -7,18 +7,18 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
     <title>@yield('title')</title>
-    @include('dashbaord.layout.styles')
+    @include('dashboard.layout.styles')
   </head>
   <body class="vertical  light rtl ">
     <div class="wrapper">
-@include('dashbaord.layout.header')
-@include('dashbaord.layout.sidbar')
+@include('dashboard.layout.header')
+@include('dashboard.layout.sidbar')
 
 <main role="main" class="main-content">
           @yield('content')
        
       </main> <!-- main -->
     </div> <!-- .wrapper -->
-@include('dashbaord.layout.scripts')
+@include('dashboard.layout.scripts')
   </body>
 </html>
