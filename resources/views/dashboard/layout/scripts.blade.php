@@ -59,6 +59,11 @@
 
 <script src='{{ asset('adminAsset/js/quill.min.js') }}'></script>
 
+<script src='{{ asset('adminAsset/plugins/notify/js/notifIt.js') }}'></script>
+<script src='{{ asset('adminAsset/plugins/notify/js/notifit-custom.js') }}'></script>
+
+
+
 <script>
   $('.select2').select2(
   {

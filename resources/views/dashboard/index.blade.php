@@ -1,7 +1,7 @@
 @extends('dashboard.layout.master')
 
 @section('title')
-    welcome
+    {{ __('words.dashboard') }}
 @endsection
 
 @section('content')

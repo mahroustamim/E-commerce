@@ -18,6 +18,8 @@
 
 <link rel="stylesheet" href="{{ asset('adminAsset/css/quill.snow.css') }}">
 
+<link rel="stylesheet" href="{{ asset('adminAsset/plugins/notify/css/notifIt.css') }}">
+
 <!-- Date Range Picker CSS -->
 <link rel="stylesheet" href="{{ asset('adminAsset/css/daterangepicker.css') }}">
 

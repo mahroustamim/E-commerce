@@ -7,8 +7,9 @@ return [
     'favicon' => 'صورة مصغرة',
     'facebook' => 'فيس بوك',
     'instagram' => 'إنستغرام',
+    'twitter' => 'تويتر',
     'phone' => 'الهاتف',
-    'email' => 'البريد الالكتروني',
+    // 'email' => 'البريد الالكتروني',
     'translations' => 'الترجمات',
     'users' => 'المستخدمين',
     'user' => 'مستخدم',
@@ -69,10 +70,8 @@ return [
     'visitsNumber' => 'الزيارات',
     'increased' => 'الزيادة',
     'decreased' => 'النقصان',
-    'noDataAvailable' => 'لا وجد بيانات',
-    'noChange' => 'لا يوجد تغير',
-    'label' => 'الاقسام الاكثر زيارة',
-    'manager' => 'مدير المشروع',
+
+    'saveSucc' => 'تم الحفظ بنجاح',
 ];
 
 

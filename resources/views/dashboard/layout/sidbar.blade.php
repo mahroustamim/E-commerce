@@ -16,28 +16,11 @@
         </a>
       </div>
       <ul class="navbar-nav flex-fill w-100 mb-2">
-        <li class="nav-item dropdown">
-          <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('dashboard.home') }}">
             <i class="fe fe-home fe-16"></i>
-            <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+            <span class="ml-3 item-text">{{ __('words.dashboard') }}</span>
           </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-            <li class="nav-item active">
-              <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Analytics</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">E-commerce</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas Dashboard</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>
-            </li>
-          </ul>
         </li>
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
@@ -127,26 +110,13 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-pie-chart fe-16"></i>
-            <span class="ml-3 item-text">Charts</span>
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('dashboard.setting') }}">
+            <i class="fe fe-settings fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.settings') }}</span>
           </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Inline Chart</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">ApexCharts</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
-            </li>
-          </ul>
         </li>
+      
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
         <span>Apps</span>
