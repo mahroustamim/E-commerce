@@ -22,9 +22,7 @@ return [
     'account' => 'Don\'t have an account?',
     'register' => 'register',
     'signIn' => 'sign in',
-    'userM1' => 'user deleted successfully',
-    'userM2' => 'Delete User',
-    'userM3' => 'Are you sure to delete',
+    'areYouSure' => 'Are you sure to delete',
     'name' => 'Name',
     'status' => 'Status',
     'action' => 'Action',
@@ -71,8 +69,22 @@ return [
 
 
     'saveSucc' => 'Save successfully',
+    'deleteSucc' => 'Deleted successfully',
+    'updateSucc' => 'Updated successfully',
+    'next' => 'next',
+    'previous' => 'previous',
+    'load' => 'load',
+    'allEntries' => 'all entries',
+    'emptyTable' => 'no data found',
+    'close' => 'close',
+    'oldImage' => 'old image',
     '' => '',
     '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+
+
 ];
 
 

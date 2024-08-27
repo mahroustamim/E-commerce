@@ -93,22 +93,11 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
             <i class="fe fe-grid fe-16"></i>
-            <span class="ml-3 item-text">Tables</span>
+            <span class="ml-3 item-text">{{ __('words.categories') }}</span>
           </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Basic Tables</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Advanced Tables</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_datatables.html"><span class="ml-1 item-text">Data Tables</span></a>
-            </li>
-          </ul>
         </li>
         <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.setting') }}">
