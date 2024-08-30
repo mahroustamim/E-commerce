@@ -18,14 +18,10 @@ class CategoryController extends Controller
     {
         if ($request->ajax()) {
 
-            $local = app()->getLocale();
         
             $query = Category::query();
             return DataTables::of($query)
                 ->addIndexColumn()
-                ->addColumn('name', function($row) use ($local) {
-                    return $row->{'name_' . $local};
-                })
                 ->addColumn('action', function($row){
                     $editBtn = '<a href="' . route('dashboard.categories.edit', $row->id) . '" class="edit btn btn-success btn-sm text-light"><i class="fe fe-edit fe-16"></i></a>';
                     $deleteBtn = '<a href="#exampleModal" data-toggle="modal" class="delete btn btn-danger btn-sm text-light" data-id="' . $row->id . '"><i class="fe fe-delete fe-16"></i></a>';

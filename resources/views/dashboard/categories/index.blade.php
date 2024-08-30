@@ -96,30 +96,35 @@
 
 <script>
     $(document).ready(function() {
-        $('#mahrous').DataTable({
-            language: {
-                paginate: {
-                    previous: '{{ __('words.next') }}',
-                    next: '{{ __('words.previous') }}',
-                },
-                processing: '{{ __('words.load') }} ...',
-                lengthMenu: '_MENU_ {{ __('words.allEntries') }} ',
-                search: '{{ __('words.search') }}',
-                emptyTable: '{{ __('words.emptyTable') }}',
+    $('#mahrous').DataTable({
+        language: {
+            paginate: {
+                previous: '{{ __('words.previous') }}',  
+                next: '{{ __('words.next') }}',
             },
-            info: false,
-            processing: true,
-            serverSide: true,
-            scrollX: true ,
-            ajax: "{{ route('dashboard.categories.index') }}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
-                {data: 'name', name: 'name'}, 
-                {data: 'image', name: 'image'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
-            ],
-        });
+            processing: '{{ __('words.load') }} ...',
+            lengthMenu: '_MENU_ {{ __('words.allEntries') }} ',
+            search: '{{ __('words.search') }}',
+            emptyTable: '{{ __('words.emptyTable') }}',
+        },
+        info: false,
+        processing: true,
+        serverSide: true,
+        scrollX: true,
+        ajax: "{{ route('dashboard.categories.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
+            @if(app()->getLocale() == 'en')
+                {data: 'name_en', name: 'name_en'},
+            @else
+                {data: 'name_ar', name: 'name_ar'},
+            @endif
+            {data: 'image', name: 'image'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ],
     });
+});
+
 </script>
 
 <script>
