@@ -110,7 +110,6 @@
         info: false,
         processing: true,
         serverSide: true,
-        scrollX: true,
         ajax: "{{ route('dashboard.categories.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},

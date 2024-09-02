@@ -19,15 +19,16 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->text('desc_en');
             $table->text('desc_ar');
+            $table->string('brand_en');
+            $table->string('brand_ar');
             $table->integer('price');
-            $table->integer('quantity');
-            $table->integer('discount');
-            $table->enum('status_en', ['available', 'unavailable'])->default('available');
-            $table->enum('status_ar', ['متوفر', 'غير متوفر'])->default('متوفر');
-            $table->json('colors_en');
-            $table->json('colors_ar');
-            $table->json('sizes');
-            $table->softDeletes();
+            $table->integer('quantity')->default(0);
+            $table->integer('discount')->default(0);
+            $table->enum('status', ['available', 'unavailable'])->default('available');
+            $table->json('colors');
+            $table->json('sizes')->nullable();
+            $table->string('photo');
+            $table->string('creator');
             $table->timestamps();
         });
     }

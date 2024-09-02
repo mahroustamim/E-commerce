@@ -15,8 +15,9 @@
 @include('dashboard.layout.sidbar')
 
 <main role="main" class="main-content">
+  <div class="container-fluid">
           @yield('content')
-       
+       </div>
       </main> <!-- main -->
     </div> <!-- .wrapper -->
 @include('dashboard.layout.scripts')

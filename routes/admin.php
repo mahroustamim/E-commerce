@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\IndexController;
+use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\dashboard\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,11 @@ Route::post('updateOrCreate', [SettingController::class, 'updateOrCreate'])->nam
 
 Route::resources([
     'categories' => CategoryController::class,
+    'products'    => ProductController::class,
 ]);
 
 Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+
+Route::post('products/delete', [ProductController::class, 'delete'])->name('products.delete');
+
+Route::post('products/status', [ProductController::class, 'changStatus'])->name('products.status');
