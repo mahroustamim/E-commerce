@@ -102,7 +102,7 @@ return [
     'changeStatus' => 'Change status',
     'select' => 'select',
     'creator' => 'creator',
-    '' => '',
+    'logs' => 'Logs',
     '' => '',
     '' => '',
     '' => '',

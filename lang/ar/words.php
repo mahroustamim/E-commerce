@@ -103,6 +103,7 @@ return [
     'changeStatus' => 'تغير الحالة ',
     'select' => 'حدد',
     'creator' => 'المنشئ',
+    'logs' => 'السجلات',
 
 
 

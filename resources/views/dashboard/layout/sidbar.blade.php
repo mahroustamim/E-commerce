@@ -88,6 +88,12 @@
           </a>
         </li>
         <li class="nav-item w-100">
+          <a class="nav-link" href="http://localhost/projects/E-commerce/public/logs">
+            <i class="fe fe-alert-triangle fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.logs') }}</span>
+          </a>
+        </li>
+        <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.setting') }}">
             <i class="fe fe-settings fe-16"></i>
             <span class="ml-3 item-text">{{ __('words.settings') }}</span>
