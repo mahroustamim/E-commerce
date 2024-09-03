@@ -117,14 +117,14 @@
         <div class="col-12 col-lg-6">
             <div class="form-group mb-3">
                 <label for="content_en">description</label>
-                <textarea name="content_en" id="conent_en" cols="60" rows="4">{{ $setting->content_en }}</textarea>
+                <textarea name="content_en" class="form-control" id="conent_en" cols="60" rows="4">{{ $setting->content_en }}</textarea>
             </div>
         </div>
 
         <div class="col-12 col-lg-6">
             <div class="form-group mb-3">
                 <label for="content_ar">الوصف</label>
-                <textarea name="content_ar" id="conent_ar" cols="60" rows="4">{{ $setting->content_ar }}</textarea>
+                <textarea name="content_ar" class="form-control" id="conent_ar" cols="60" rows="4">{{ $setting->content_ar }}</textarea>
             </div>
         </div>
 
