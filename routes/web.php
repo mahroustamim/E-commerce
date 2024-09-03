@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\wesite\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -22,6 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', function () {
     return view('auth.login');
 })->middleware('guest');
+
+
+Route::middleware('auth')->prefix('website')->name('website.')->group(function () {
+    Route::get('home', [IndexController::class, 'index'])->name('home');
+});
 
 
 
