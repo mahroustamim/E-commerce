@@ -12,9 +12,17 @@ class Category extends Model
 
     protected $fillable = ['name_en', 'name_ar', 'image'];
 
-    public function product() {
+    public function products() {
 
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id', 'id');
 
     }
+
+    // protected $appends = ['name'];
+
+    // public function getNameAttribute() 
+    // {
+    //     $locale = app()->getLocale();
+    //     return $this->attributes['name_' . $locale];
+    // }
 }

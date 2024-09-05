@@ -19,7 +19,7 @@ class CategoryController extends Controller
         if ($request->ajax()) {
 
         
-            $query = Category::query();
+            $query = Category::query()->with('products');
             return DataTables::of($query)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
