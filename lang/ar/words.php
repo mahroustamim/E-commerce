@@ -104,6 +104,17 @@ return [
     'select' => 'حدد',
     'creator' => 'المنشئ',
     'logs' => 'السجلات',
+    'contact' => 'اتصل بنا',
+    'about' => 'معلومات عنا',
+    'qualityProduct' => 'منتج عالي الجودة',
+    'freeShipping' => 'شحن مجاني',
+    'securePayment' => 'دفع آمن',
+    '24/7Support' => 'دعم 24/7',
+    'reasonablePrice' => 'سعر معقول',
+    'fashionableProducts' => 'منتجات عصرية',
+    'showNow' => 'تسوق الان',
+
+
 
 
 
