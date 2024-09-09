@@ -32,6 +32,9 @@ return [
     'add' => 'إضافة',
     'cancel' => 'إلغاء',
     'confirmPassword' => 'تاكيد كلمة السر',
+    'forgotYourPassword' => 'نسيت كلمة السر',
+    'resetPassword' => 'تعيين كلمة السر',
+    'sendPasswordRessetLink' => 'إرسال لينك تعيين كلمة السر',
     'save' => ' حفظ البيانات',
     'category' => 'القسم',
     'categories' => 'الاقسام',
@@ -113,6 +116,11 @@ return [
     'reasonablePrice' => 'سعر معقول',
     'fashionableProducts' => 'منتجات عصرية',
     'showNow' => 'تسوق الان',
+    'hello' => 'مرحباً',
+    'resetPasswordSubject' => 'إعادة تعيين كلمة المرور',
+    'resetPasswordLine' => 'لقد تلقينا طلباً لإعادة تعيين كلمة المرور لحسابك.',
+    'resetPasswordButton' => 'إعادة تعيين كلمة المرور',
+    'noFurtherAction' => 'إذا لم تطلب إعادة تعيين كلمة المرور، فلا حاجة لاتخاذ أي إجراء آخر.',
 
 
 

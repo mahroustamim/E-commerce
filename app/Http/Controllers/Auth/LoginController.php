@@ -31,7 +31,7 @@ class LoginController extends Controller
         if (Auth::user()->status === 'admin' || Auth::user()->status === 'supervisor')
             return '/dashboard/home';
         else 
-            return 'website/home';
+            return '/website/home';
     }
 
     /**
