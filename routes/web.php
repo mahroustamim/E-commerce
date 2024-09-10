@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -26,7 +26,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware('auth')->prefix('website')->name('website.')->group(function () {
+Route::middleware(['verified'])->prefix('website')->name('website.')->group(function () {
     Route::get('home', [IndexController::class, 'index'])->name('home');
 });
 
