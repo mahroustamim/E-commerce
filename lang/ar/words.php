@@ -32,6 +32,9 @@ return [
     'add' => 'إضافة',
     'cancel' => 'إلغاء',
     'confirmPassword' => 'تاكيد كلمة السر',
+    'forgotYourPassword' => 'نسيت كلمة السر',
+    'resetPassword' => 'تعيين كلمة السر',
+    'sendPasswordRessetLink' => 'إرسال لينك تعيين كلمة السر',
     'save' => ' حفظ البيانات',
     'category' => 'القسم',
     'categories' => 'الاقسام',
@@ -113,8 +116,22 @@ return [
     'reasonablePrice' => 'سعر معقول',
     'fashionableProducts' => 'منتجات عصرية',
     'showNow' => 'تسوق الان',
-
-
+    'hello' => 'مرحباً',
+    'resetPasswordSubject' => 'إعادة تعيين كلمة المرور',
+    'resetPasswordLine' => 'لقد تلقينا طلباً لإعادة تعيين كلمة المرور لحسابك.',
+    'resetPasswordButton' => 'إعادة تعيين كلمة المرور',
+    'noFurtherAction' => 'إذا لم تطلب إعادة تعيين كلمة المرور، فلا حاجة لاتخاذ أي إجراء آخر.',
+    'verify_subject' => 'تحقق من عنوان بريدك الإلكتروني',
+    'line_1' => 'يرجى النقر على الزر أدناه للتحقق من عنوان بريدك الإلكتروني.',
+    'verify_button' => 'تحقق من البريد الإلكتروني',
+    'line_2' => 'إذا لم تقم بإنشاء حساب، فلا حاجة لاتخاذ أي إجراء آخر.',
+    'verify_email' => 'تحقق من عنوان بريدك الإلكتروني',
+    'fresh_verification_link' => 'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
+    'check_email_verification' => 'قبل المتابعة، يرجى التحقق من بريدك الإلكتروني لرابط التحقق.',
+    'did_not_receive_email' => 'إذا لم تستلم البريد الإلكتروني',
+    'click_here_to_request_another' => 'انقر هنا لطلب آخر',
+    'governorate' => 'المحافظة',
+    'governorate' => 'المحافظات',
 
 
 

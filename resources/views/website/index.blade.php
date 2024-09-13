@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>{{ $setting->name_en }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
     @if (app()->getLocale() === 'en')
         <meta content="{{ $setting->content_en }}" name="description">
     @else
@@ -25,6 +24,8 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('websiteAsset/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('adminAsset/plugins/notify/css/notifIt.css') }}">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('websiteAsset/css/style.css') }}" rel="stylesheet">
@@ -93,10 +94,16 @@
                             <a href="contact.html" class="nav-item nav-link">{{ __('words.contact') }}</a>
 
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
-                        </div>
+                        @if (Auth::check())
+                            <div class="navbar-nav ml-auto py-0">
+                                <a href="{{ route('website.profile', auth()->user()->id) }}" class="nav-item nav-link">{{ __('words.profile') }}</a>
+                            </div>
+                        @else
+                            <div class="navbar-nav ml-auto py-0">
+                                <a href="{{ route('login') }}" class="nav-item nav-link">{{ __('words.login') }}</a>
+                                <a href="{{ route('register') }}" class="nav-item nav-link">{{ __('words.register') }}</a>
+                            </div>
+                        @endif
                     </div>
                 </nav>
 
@@ -258,9 +265,11 @@
             <div class="col-md-6 col-lg-3 mb-5">
                 <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                    <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.login') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.register') }}</a>
+                    @auth
+                    <a class="text-dark mb-2" href="{{ route('website.profile', auth()->user()->id) }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.profile') }}</a>
+                    @endauth
                     <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
                     <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
                     <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
@@ -297,6 +306,9 @@
     <!-- Contact Javascript File -->
     <script src="{{ asset('websiteAsset/mail/jqBootstrapValidation.min.js') }}"></script>
     <script src="{{ asset('websiteAsset/mail/contact.js') }}"></script>
+
+    <script src='{{ asset('adminAsset/plugins/notify/js/notifIt.js') }}'></script>
+    <script src='{{ asset('adminAsset/plugins/notify/js/notifit-custom.js') }}'></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('websiteAsset/js/main.js') }}"></script>

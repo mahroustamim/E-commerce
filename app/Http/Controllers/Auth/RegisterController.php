@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Governorate;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+     public function showRegistrationForm()
+     {
+        $locale = app()->getLocale();
+        $governorates = Governorate::select('id', "governorate_{$locale} as name")->get();
+         return view('auth.register', compact('governorates')); // Pass to the view
+     }
+
+     
+    protected $redirectTo = '/website/home';
 
     /**
      * Create a new controller instance.
@@ -52,6 +62,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'regex:/^(010|011|012|015)\d{8}$/'],
+            'governorate' => ['required', 'exists:governorates,id'],
+
         ]);
     }
 
@@ -67,6 +80,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'governorate_id' => $data['governorate'],
+            'status' => 'user',
         ]);
     }
 }

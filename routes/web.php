@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\wesite\IndexController;
+use App\Http\Controllers\website\ProfileController;
+use App\Http\Controllers\website\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -26,8 +27,13 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware('auth')->prefix('website')->name('website.')->group(function () {
+Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->group(function () {
+
     Route::get('home', [IndexController::class, 'index'])->name('home');
+
+    Route::get('profile{id}', [ProfileController::class, 'index'])->name('profile');
+    
+    Route::post('profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 
