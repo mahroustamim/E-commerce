@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\website\ProfileController;
 use App\Http\Controllers\wesite\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +27,12 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware(['verified'])->prefix('website')->name('website.')->group(function () {
+Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->group(function () {
     Route::get('home', [IndexController::class, 'index'])->name('home');
+    Route::get('profile{id}', [ProfileController::class, 'index'])->name('profile');
+    Route::post('profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('profile/delete/{id}', [ProfileController::class, 'delete'])->name('profile.delete');
+
 });
 
 

@@ -34,6 +34,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'phone',
+        'status',
+        'governorate_id'
     ];
 
     /**
@@ -55,4 +58,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function governorate() {
+        return $this->belongsTo(Governorate::class, 'governorate_id', 'id');
+    }
 }

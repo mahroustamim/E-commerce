@@ -105,6 +105,13 @@
             <span class="ml-3 item-text">{{ __('words.settings') }}</span>
           </a>
         </li>
+
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fe fe-log-out fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.logout') }}</span>
+          </a>
+        </li>
       
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">

@@ -63,11 +63,27 @@
           </div>
           <button class="btn btn-lg btn-success btn-block" type="submit">{{ __('words.login') }}</button>
 
-          @if (Route::has('password.request'))
-            <a class="btn btn-link text-danger" href="{{ route('password.request') }}">
-                {{ __('words.forgotYourPassword') }}
-            </a>
-          @endif
+          <div class="row pt-3">
+
+                      
+            <div class="col-4">
+              <a class="btn btn-link" style="font-size: 15px;" href="{{ route('register') }}">
+                  {{ __('words.register') }}
+              </a>
+          </div>
+
+            <div class="col-8">
+              @if (Route::has('password.request'))
+                  <a class="btn btn-link text-danger" href="{{ route('password.request') }}">
+                      {{ __('words.forgotYourPassword') }}
+                  </a>
+              @endif
+          </div>
+
+          
+
+          </div>
+
 
         </form>
       </div>

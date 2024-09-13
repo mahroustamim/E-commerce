@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('governorates', function (Blueprint $table) {
             $table->id();
-            $table->string('city_en');
-            $table->string('city_ar');
+            $table->string('governorate_en');
+            $table->string('governorate_ar');
 
             $table->integer('delivery_price');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('governorates');
     }
 };

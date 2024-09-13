@@ -130,6 +130,8 @@ return [
     'check_email_verification' => 'قبل المتابعة، يرجى التحقق من بريدك الإلكتروني لرابط التحقق.',
     'did_not_receive_email' => 'إذا لم تستلم البريد الإلكتروني',
     'click_here_to_request_another' => 'انقر هنا لطلب آخر',
+    'governorate' => 'المحافظة',
+    'governorate' => 'المحافظات',
 
 
 
