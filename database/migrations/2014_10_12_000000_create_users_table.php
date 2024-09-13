@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->enum('status', ['admin', 'user', 'supervisor'])->default('user');
             $table->unsignedBigInteger('governorate_id')->nullable(); // Make it nullable if you want to allow NULL
             $table->foreign('governorate_id')->references('id')->on('governorates')->onDelete('set null');            

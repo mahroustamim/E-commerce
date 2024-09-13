@@ -13,6 +13,9 @@
     @endif
 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <!-- Favicon -->
     <link href="{{ asset('images/settings/' . $setting->favicon) }}" rel="icon">
 
@@ -25,6 +28,8 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('websiteAsset/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('adminAsset/plugins/notify/css/notifIt.css') }}">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('websiteAsset/css/style.css') }}" rel="stylesheet">
@@ -195,8 +200,12 @@
     <script src="{{ asset('websiteAsset/mail/jqBootstrapValidation.min.js') }}"></script>
     <script src="{{ asset('websiteAsset/mail/contact.js') }}"></script>
 
+    <script src='{{ asset('adminAsset/plugins/notify/js/notifIt.js') }}'></script>
+    <script src='{{ asset('adminAsset/plugins/notify/js/notifit-custom.js') }}'></script>
+
     <!-- Template Javascript -->
     <script src="{{ asset('websiteAsset/js/main.js') }}"></script>
+    @yield('scripts')
 
 </body>
 
