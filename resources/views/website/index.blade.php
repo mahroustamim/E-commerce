@@ -89,7 +89,7 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div> --}}
-                            <a href="contact.html" class="nav-item nav-link">{{ __('words.products') }}</a>
+                            <a href="{{ route('website.products') }}" class="nav-item nav-link">{{ __('words.products') }}</a>
                             <a href="contact.html" class="nav-item nav-link">{{ __('words.about') }}</a>
                             <a href="contact.html" class="nav-item nav-link">{{ __('words.contact') }}</a>
 

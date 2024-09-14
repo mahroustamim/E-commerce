@@ -133,6 +133,10 @@ return [
     'governorate' => 'المحافظة',
     'governorate' => 'المحافظات',
     'pages' => 'الصفحات',
+    'all' => 'الكل',
+    'filter_by_price' => 'تصفية حسب السعر',
+    'filter_by_color' => 'تصفية حسب اللون',
+    'filter_by_size' => 'تصفية حسب الحجم',
 
 
 
