@@ -85,7 +85,7 @@
                         <div class="navbar-nav mr-auto py-0" @if (app()->getLocale() === 'ar') dir="rtl" @endif>
 
                             <a href="{{ route('website.home') }}" class="nav-item nav-link active">{{ __('words.home') }}</a>
-                            <a href="detail.html" class="nav-item nav-link">{{ __('words.categories') }}</a>
+                            <a href="{{ route('website.categories') }}" class="nav-item nav-link">{{ __('words.categories') }}</a>
                             {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -100,7 +100,7 @@
                         </div>
                         @if (Auth::check())
                             <div class="navbar-nav ml-auto py-0">
-                                <a href="{{ route('website.profile',  auth()->user()->id) }}" class="nav-item nav-link">{{ __('words.profile') }}</a>
+                                <a href="{{ route('website.profile',  auth()->user()->id) }}" class="nav-item nav-link">{{ auth()->user()->name  }}</a>
                             </div>
                         @else
                             <div class="navbar-nav ml-auto py-0">

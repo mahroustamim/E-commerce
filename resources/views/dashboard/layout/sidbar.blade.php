@@ -106,24 +106,20 @@
           </a>
         </li>
 
-        <li class="nav-item w-100">
-          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fe fe-log-out fe-16"></i>
-            <span class="ml-3 item-text">{{ __('words.logout') }}</span>
-          </a>
-        </li>
       
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
-        <span>Apps</span>
+        <span>{{ __('words.pages') }}</span>
       </p>
       <ul class="navbar-nav flex-fill w-100 mb-2">
+
         <li class="nav-item w-100">
-          <a class="nav-link" href="calendar.html">
+          <a class="nav-link" href="{{ route('website.profile',  auth()->user()->id) }}">
             <i class="fe fe-calendar fe-16"></i>
-            <span class="ml-3 item-text">Calendar</span>
+            <span class="ml-3 item-text">{{ __('words.profile') }}</span>
           </a>
         </li>
+        
         <li class="nav-item dropdown">
           <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-book fe-16"></i>
@@ -174,6 +170,14 @@
         <span>Extra</span>
       </p>
       <ul class="navbar-nav flex-fill w-100 mb-2">
+
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fe fe-log-out fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.logout') }}</span>
+          </a>
+        </li>
+        
         <li class="nav-item dropdown">
           <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-file fe-16"></i>

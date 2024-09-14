@@ -34,6 +34,8 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
     Route::get('profile{id}', [ProfileController::class, 'index'])->name('profile');
     
     Route::post('profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('categories', [IndexController::class, 'categories'])->name('categories');
 });
 
 

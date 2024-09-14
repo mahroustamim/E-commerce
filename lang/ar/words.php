@@ -132,6 +132,8 @@ return [
     'click_here_to_request_another' => 'انقر هنا لطلب آخر',
     'governorate' => 'المحافظة',
     'governorate' => 'المحافظات',
+    'pages' => 'الصفحات',
+
 
 
 

@@ -132,7 +132,7 @@ return [
     'click_here_to_request_another' => 'Click here to request another',
     'governorate' => 'Governorate',
     'governorate' => 'Governorates',
-    '' => '',
+    'pages' => 'pages',
     '' => '',
     '' => '',
     '' => '',
