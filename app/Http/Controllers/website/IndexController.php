@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Laravel\Ui\Presets\React;
 use Symfony\Contracts\Service\Attribute\Required;
 
+use function PHPUnit\Framework\returnSelf;
+
 class IndexController extends Controller
 {
     // ===============================================================================
@@ -120,7 +122,9 @@ class IndexController extends Controller
     // ===============================================================================
     // ===============================================================================
 
-    
+    public function about() {
+        return view('website.about');
+    }
 
 
 }

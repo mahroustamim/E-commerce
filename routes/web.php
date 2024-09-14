@@ -39,7 +39,7 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
 
     Route::get('products', [IndexController::class, 'products'])->name('products');
 
-
+    Route::get('about', [IndexController::class, 'about'])->name('about');
 
 });
 
