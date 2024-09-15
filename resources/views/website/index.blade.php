@@ -91,7 +91,7 @@
                             </div> --}}
                             <a href="{{ route('website.products') }}" class="nav-item nav-link">{{ __('words.products') }}</a>
                             <a href="{{ route('website.about') }}" class="nav-item nav-link">{{ __('words.about') }}</a>
-                            <a href="contact.html" class="nav-item nav-link">{{ __('words.contact') }}</a>
+                            <a href="{{ route('website.contact') }}" class="nav-item nav-link">{{ __('words.contact') }}</a>
 
                         </div>
                         @if (Auth::check())
@@ -209,7 +209,7 @@
 
             @foreach ($products as $product)
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
+                <div class="card product-item border-0 mb-4 shadow-lg">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                         <img class="img-fluid w-100" src="{{ asset('images/products/main/' . $product->photo) }}" alt="">
                     </div>

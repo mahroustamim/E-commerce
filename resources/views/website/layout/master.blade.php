@@ -95,7 +95,7 @@
                             </div> --}}
                             <a href="{{ route('website.products') }}" class="nav-item nav-link">{{ __('words.products') }}</a>
                             <a href="{{ route('website.about') }}" class="nav-item nav-link">{{ __('words.about') }}</a>
-                            <a href="contact.html" class="nav-item nav-link">{{ __('words.contact') }}</a>
+                            <a href="{{ route('website.contact') }}" class="nav-item nav-link">{{ __('words.contact') }}</a>
 
                         </div>
                         @if (Auth::check())

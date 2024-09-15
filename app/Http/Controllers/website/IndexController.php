@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\Category;
 use App\Models\Product;
+use function PHPUnit\Framework\returnSelf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 use Laravel\Ui\Presets\React;
 use Symfony\Contracts\Service\Attribute\Required;
-
-use function PHPUnit\Framework\returnSelf;
 
 class IndexController extends Controller
 {
@@ -126,5 +128,33 @@ class IndexController extends Controller
         return view('website.about');
     }
 
+    // ===============================================================================
+    // ===============================================================================
+
+    public function contact() {
+        return view('website.contact');
+    }
+
+    public function sendContact(Request $request) {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string'
+        ]);
+
+        $contactData = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+        ];
+
+        Mail::to('mahroustamim@gmail.com')->send(new ContactMail($contactData));
+        return redirect()->back()->with('success', __('words.sendSucc') );
+    }
+
+    // ===============================================================================
+    // ===============================================================================
 
 }

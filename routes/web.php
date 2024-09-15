@@ -41,6 +41,12 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
 
     Route::get('about', [IndexController::class, 'about'])->name('about');
 
+    Route::get('contact', [IndexController::class, 'contact'])->name('contact');
+
+    Route::post('contact', [IndexController::class, 'sendContact'])->name('contact');
+
+
+
 });
 
 
