@@ -56,8 +56,8 @@
             <div class="col-lg-3 col-6 text-right">
                 <a href="" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
+                    <span class="badge">{{ $carts_count }}</span>
+                </a> 
             </div>
         </div>
     </div>
@@ -219,9 +219,8 @@
                             <h6>{{ $product->price }}</h6><h6 class="text-muted ml-2"><del>{{ $product->price + $product->discount }}</del></h6>
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                    <div class="card-footer d-flex justify-content-center bg-light border">
+                        <a href="{{ route('website.cart', $product->id) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-success mr-1"></i>View Detail</a>
                     </div>
                 </div>
             </div>

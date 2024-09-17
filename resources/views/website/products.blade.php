@@ -45,27 +45,28 @@
                                 
                                 <div class="border-bottom mb-4 pb-4">
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" name="price[]" value="all" class="custom-control-input"  id="price-all">
+                                        <input type="checkbox" name="price[]" value="all" class="custom-control-input"  id="price-all" {{ in_array('all', $selectedPrices) ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="price-all">{{ __('words.all') }}</label>
                                     </div>
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" name="price[]" value="0-100" class="custom-control-input" id="price-1">
-                                        <label class="custom-control-label" for="0-100">0 - 100</label>
+                                        <input type="checkbox" name="price[]" value="0-100" class="custom-control-input" id="price-1" {{ in_array('0-100', $selectedPrices) ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="price-1">0 - 100</label>
                                     </div>
+                                    
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" name="price[]" value="100-200" class="custom-control-input" id="price-2">
+                                        <input type="checkbox" name="price[]" value="100-200" class="custom-control-input" id="price-2" {{ in_array('100-200', $selectedPrices) ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="price-2">100 - 200</label>
                                     </div>
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" name="price[]" value="200-300" class="custom-control-input" id="price-3">
+                                        <input type="checkbox" name="price[]" value="200-300" class="custom-control-input" id="price-3" {{ in_array('200-300', $selectedPrices) ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="price-3">200 - 300</label>
                                     </div>
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" name="price[]" value="300-400" class="custom-control-input" id="price-4">
+                                        <input type="checkbox" name="price[]" value="300-400" class="custom-control-input" id="price-4" {{ in_array('300-400', $selectedPrices) ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="price-4">300 - 400</label>
                                     </div>
                                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                        <input type="checkbox" name="price[]" value="400-500" class="custom-control-input" id="price-5">
+                                        <input type="checkbox" name="price[]" value="400-500" class="custom-control-input" id="price-5" {{ in_array('400-500', $selectedPrices) ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="price-5">400 - 500</label>
                                     </div>
                             </div>
@@ -88,43 +89,43 @@
                           <div class="card-body">
                             <div class="border-bottom mb-4 pb-4">
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="all" class="custom-control-input"  id="color-all">
+                                    <input type="checkbox" name="colors[]" value="all" class="custom-control-input"  id="color-all" {{ in_array('all', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-all">{{ __('words.all') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="black" class="custom-control-input" id="color-1">
+                                    <input type="checkbox" name="colors[]" value="black" class="custom-control-input" id="color-1" {{ in_array('black', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-1">{{ __('words.black') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="white" class="custom-control-input" id="color-2">
+                                    <input type="checkbox" name="colors[]" value="white" class="custom-control-input" id="color-2" {{ in_array('white', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-2">{{ __('words.white') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="red" class="custom-control-input" id="color-3">
+                                    <input type="checkbox" name="colors[]" value="red" class="custom-control-input" id="color-3" {{ in_array('red', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-3">{{ __('words.red') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="blue" class="custom-control-input" id="color-4">
+                                    <input type="checkbox" name="colors[]" value="blue" class="custom-control-input" id="color-4" {{ in_array('all', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-4">{{ __('words.blue') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="green" class="custom-control-input" id="color-5">
+                                    <input type="checkbox" name="colors[]" value="green" class="custom-control-input" id="color-5" {{ in_array('green', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-5">{{ __('words.green') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="yellow" class="custom-control-input" id="color-6">
+                                    <input type="checkbox" name="colors[]" value="yellow" class="custom-control-input" id="color-6" {{ in_array('yellow', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-6">{{ __('words.yellow') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="orange" class="custom-control-input" id="color-7">
+                                    <input type="checkbox" name="colors[]" value="orange" class="custom-control-input" id="color-7" {{ in_array('orange', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-7">{{ __('words.orange') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="grey" class="custom-control-input" id="color-8">
+                                    <input type="checkbox" name="colors[]" value="grey" class="custom-control-input" id="color-8" {{ in_array('grey', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-8">{{ __('words.grey') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input type="checkbox" name="colors[]" value="olive" class="custom-control-input" id="color-9">
+                                    <input type="checkbox" name="colors[]" value="olive" class="custom-control-input" id="color-9" {{ in_array('olive', $selectedColors) ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="color-9">{{ __('words.olive') }}</label>
                                 </div>
                         </div>
@@ -147,27 +148,27 @@
                       <div class="card-body">
                         <div class="mb-5">
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" name="sizes[]" value="all" class="custom-control-input"  id="size-all">
+                                <input type="checkbox" name="sizes[]" value="all" class="custom-control-input"  id="size-all" {{ in_array('all', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-all">{{ __('words.all') }}</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" name="sizes[]" value="XS" class="custom-control-input" id="size-1">
+                                <input type="checkbox" name="sizes[]" value="XS" class="custom-control-input" id="size-1" {{ in_array('XL', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-1">XS</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" name="sizes[]" value="S" class="custom-control-input" id="size-2">
+                                <input type="checkbox" name="sizes[]" value="S" class="custom-control-input" id="size-2" {{ in_array('S', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-2">S</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" name="sizes[]" value="M" class="custom-control-input" id="size-3">
+                                <input type="checkbox" name="sizes[]" value="M" class="custom-control-input" id="size-3" {{ in_array('M', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-3">M</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" name="sizes[]" value="L" class="custom-control-input" id="size-4">
+                                <input type="checkbox" name="sizes[]" value="L" class="custom-control-input" id="size-4" {{ in_array('L', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-4">L</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" name="sizes[]" value="XL" class="custom-control-input" id="size-5">
+                                <input type="checkbox" name="sizes[]" value="XL" class="custom-control-input" id="size-5" {{ in_array('XL', $selectedSizes) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="size-5">XL</label>
                             </div>
                     </div>
@@ -207,9 +208,8 @@
                                         <h6>{{ $product->price }}</h6><h6 class="text-muted ml-2"><del>{{ $product->price + $product->discount }}</del></h6>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                <div class="card-footer d-flex justify-content-center bg-light border">
+                                    <a href="{{ route('website.cart', $product->id) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 </div>
                             </div>
                         </div>

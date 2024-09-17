@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Governorate;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,6 +25,32 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    // This method is triggered after successful registration
+    protected function registered(Request $request, $user)
+    {
+        $this->mergeCarts($request, $user);
+    }
+
+    // Method to merge carts after registration
+    protected function mergeCarts(Request $request, $user)
+    {
+        $cookie_id = $request->cookie('cart_id');
+
+        // Retrieve unauthenticated cart items (based on cookie_id)
+        $carts = Cart::where('cookie_id', $cookie_id)->get();
+
+        // Loop through the unauthenticated cart items
+        foreach ($carts as $cart) {
+            // Directly associate the item with the authenticated user by setting user_id
+            $cart->user_id = $user->id;
+            $cart->cookie_id = null;  // Remove the cookie_id since it's now associated with a user
+            $cart->save();
+        }
+
+        // Optionally, delete the cart_cookie_id cookie
+        cookie()->queue(cookie()->forget('cart_id'));
+    }
 
     /**
      * Where to redirect users after registration.

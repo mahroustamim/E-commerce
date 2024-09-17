@@ -88,7 +88,6 @@ return [
     'languages' => [
         'ar' => 'العربية',
         'en' => 'English',
-        'fr' => 'Frensh',
     ],
 
     /*

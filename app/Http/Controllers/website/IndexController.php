@@ -5,11 +5,14 @@ namespace App\Http\Controllers\website;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
+
+use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\returnSelf;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
+use Illuminate\Support\Facades\Mail;
 use Laravel\Ui\Presets\React;
 use Symfony\Contracts\Service\Attribute\Required;
 
@@ -64,6 +67,9 @@ class IndexController extends Controller
         $locale = app()->getLocale(); 
 
         $name = $request->name;
+        $selectedPrices = $request->price ?: [];
+        $selectedColors = $request->colors ?: [];
+        $selectedSizes = $request->sizes ?: [];
 
         $request->validate([
             'name' => 'nullable|string',
@@ -118,7 +124,7 @@ class IndexController extends Controller
 
         $products = $query->select('id', "name_{$locale} as name", 'photo', 'price', 'discount')->paginate(9);
 
-       return view('website.products', compact('products', 'name'));
+       return view('website.products', compact('products', 'name', 'selectedPrices', 'selectedColors', 'selectedSizes'));
     }
 
     // ===============================================================================
@@ -157,4 +163,5 @@ class IndexController extends Controller
     // ===============================================================================
     // ===============================================================================
 
+    
 }

@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\website\ProfileController;
+use App\Http\Controllers\website\CartController;
 use App\Http\Controllers\website\IndexController;
+use App\Http\Controllers\website\ProfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -45,7 +49,13 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
 
     Route::post('contact', [IndexController::class, 'sendContact'])->name('contact');
 
+    Route::get('cart/{id}', [CartController::class, 'index'])->name('cart');
 
+    Route::post('/cart/add', [CartController::class, 'addCart'])->name('cart.add');
+
+    Route::get('mahrous', function(Request $request) {
+           
+    });
 
 });
 
