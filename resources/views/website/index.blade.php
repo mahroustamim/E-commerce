@@ -220,7 +220,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center bg-light border">
-                        <a href="{{ route('website.cart', $product->id) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-success mr-1"></i>View Detail</a>
+                        <a href="{{ route('website.cart', $product->id) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-success mr-1"></i>{{ __('words.view_details') }}</a>
                     </div>
                 </div>
             </div>

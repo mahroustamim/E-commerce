@@ -17,28 +17,32 @@
 
 <style>
     .rating {
-        direction: rtl;
-        unicode-bidi: bidi-override;
-    }
-    
-    .rating input {
-        display: none;
-    }
-    
-    .rating label {
-        color: #ddd;
-        font-size: 2em;
-        cursor: pointer;
-    }
-    
-    .rating input:checked ~ label {
-        color: #ffc107;
-    }
-    
-    .rating label:hover,
-    .rating label:hover ~ label {
-        color: #ffc107;
-    }
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    color: #ddd;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+    color: #ffc107;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffc107;
+}
+
+
+
     </style>
 
     
@@ -67,15 +71,29 @@
 
             <div class="col-lg-7 pb-5">
                 <h3 class="font-weight-semi-bold">{{ $product->name}}</h3>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
+                <div class="d-flex mb-5">
+
+                    <div class="text-dark mr-2">
+                        <div class="rating">
+                            <input disabled type="radio" id="star10" name="rating" value="5" {{ round($averageRating) == 5 ? 'checked' : '' }}/>
+                            <label for="star10" class="star">&#9733;</label>
+                            
+                            <input disabled type="radio" id="star9" name="rating" value="4" {{ round($averageRating) == 4 ? 'checked' : '' }}/>
+                            <label for="star9" class="star">&#9733;</label>
+                            
+                            <input disabled type="radio" id="star8" name="rating" value="3" {{ round($averageRating) == 3 ? 'checked' : '' }}/>
+                            <label for="star8" class="star">&#9733;</label>
+                            
+                            <input disabled type="radio" id="star7" name="rating" value="2" {{ round($averageRating) == 2 ? 'checked' : '' }}/>
+                            <label for="star7" class="star">&#9733;</label>
+                            
+                            <input disabled type="radio" id="star6" name="rating" value="1" {{ round($averageRating) == 1 ? 'checked' : '' }}/>
+                            <label for="star6" class="star">&#9733;</label>
+                            
+                        </div>
+                        <small class="pt-1">{{ $ratingCount . ' ' . __('words.reviews') }}</small>
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{ $product->price }} £</h3>
                 <p class="mb-4">{{ $product->desc }}</p>
@@ -144,72 +162,107 @@
             </div>
         </div>
         <div class="row px-xl-5">
-            <div class="col">
-                <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+            <div class="col shadow-lg p-5">
+                {{-- <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                     <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
-                </div>
+                </div> --}}
                 <div class="tab-content">
 
                     <div class="tab-pane fade show active" id="tab-pane-3">
                         <div class="row">
+
                             <div class="col-md-6">
-                                <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
+                                <h4 class="mb-4">{{ __('words.comments') }}</h4>
+
+                                @foreach ($comments as $comment)
+                                    
                                 <div class="media mb-4">
-                                    <img src="{{ asset('websiteAsset/img/user.jpg') }}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <img src="{{ asset('websiteAsset/img/user.png') }}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                     <div class="media-body">
-                                        <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                                        <div class="text-primary mb-2">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        <h6>{{ $comment->user->name }}<small> - <i>{{  $comment->created_at->format('Y-m-d') }}</i></small></h6>
+                                        <p>{{ $comment->comment }}</p>
                                     </div>
                                 </div>
+                                @endforeach
+
+                                <!-- Render pagination links -->
+                            <div class="d-flex justify-content-center">
+                                {!! $comments->links() !!}
+                            </div>
+
+
                             </div>
                             {{-- ====================================================================== --}}
                             {{-- ====================================================================== --}}
 
                             <div class="col-md-6">
-                                <h4 class="mb-4">Leave a review</h4>
-                                <small>Your email address will not be published. Required fields are marked *</small>
+                                <h4 class="mb-4">{{ __('words.leave_review') }}</h4>
                     
                                 <!-- Rating Form -->
-                                <form>
-                                    <h5>Your Rating * :</h5>
+                                <form method="POST" action="{{ route('website.rating') }}">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                
+                                    <h5>{{ __('words.your_rating') }} * :</h5>
                                     <div class="d-flex my-3">
                                         <div class="rating">
-                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <input type="radio" id="star5" name="rating" value="5" {{ $userRated && $userRated->rating == 5 ? 'checked' : '' }}/>
                                             <label for="star5" class="star">&#9733;</label>
-                                            <input type="radio" id="star4" name="rating" value="4" />
+                                
+                                            <input type="radio" id="star4" name="rating" value="4" {{ $userRated && $userRated->rating == 4 ? 'checked' : '' }}/>
                                             <label for="star4" class="star">&#9733;</label>
-                                            <input type="radio" id="star3" name="rating" value="3" />
+                                
+                                            <input type="radio" id="star3" name="rating" value="3" {{ $userRated && $userRated->rating == 3 ? 'checked' : '' }}/>
                                             <label for="star3" class="star">&#9733;</label>
-                                            <input type="radio" id="star2" name="rating" value="2" />
+                                
+                                            <input type="radio" id="star2" name="rating" value="2" {{ $userRated && $userRated->rating == 2 ? 'checked' : '' }}/>
                                             <label for="star2" class="star">&#9733;</label>
-                                            <input type="radio" id="star1" name="rating" value="1" />
+                                
+                                            <input type="radio" id="star1" name="rating" value="1" {{ $userRated && $userRated->rating == 1 ? 'checked' : '' }}/>
                                             <label for="star1" class="star">&#9733;</label>
                                         </div>
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <input type="submit" value="Submit Rating" class="btn btn-success px-3">
-                                    </div>
-                                </form>
                                 
+                                    @auth
+                                        @if (!$userRated)
+                                            <div class="form-group mb-0">
+                                                <input type="submit" value="{{ __('words.save') }}" class="btn btn-success px-3">
+                                            </div>
+                                        @endif
+                                    @endauth
+                                
+                                    @guest
+                                        <div class="form-group mb-0">
+                                            <input type="submit" disabled value="{{ __('words.save') }}" class="btn btn-success px-3">
+                                        </div>
+                                        <div class="text-danger">{{ __('words.login_to_rate') }}</div>
+                                    @endguest
+                                </form>
                                 
                                 
                     
                                 <!-- Comment Form -->
-                                <form class="mt-4">
+                                <form class="mt-4" method="POST" action="{{ route('website.comment') }}">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <div class="form-group">
-                                        <label for="comment">Your Comment *</label>
+                                        <label for="comment">{{ __('words.your_comment') }}</label>
                                         <input type="text" class="form-control" id="comment" name="comment">
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <input type="submit" value="Leave Your Review" class="btn btn-success px-3">
-                                    </div>
+
+                                    @auth
+                                        <div class="form-group mb-0">
+                                            <input type="submit" value="{{ __('words.leaveComment') }}" class="btn btn-success px-3">
+                                        </div>
+                                    @endauth
+                                    @guest
+                                        
+                                        <div class="form-group mb-0">
+                                            <input disabled type="submit" value="Leave Your Review" class="btn btn-success px-3">
+                                            <div class="text-danger">{{ __('words.login_to_rate') }}</div>
+                                        </div>
+                                    @endguest
+
                                 </form>
 
                             </div>
@@ -226,7 +279,7 @@
     <!-- Products Start -->
     <div class="container-fluid py-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">{{ __('words.related_products') }}</span></h2>
         </div>
         <div class="row px-xl-5">
             <div class="col">
@@ -238,17 +291,16 @@
                         @foreach ($related_products as $product)
                             <div class="card product-item border-0">
                                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <img class="{{ asset('images/products/main/' . $product->photo) }}" src="img/product-4.jpg" alt="">
+                                    <img class="img-fluid w-100" src="{{ asset('images/products/main/' . $product->photo) }}" alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <h6 class="text-truncate mb-3">{{ $prodcut->name }}</h6>
+                                    <h6 class="text-truncate mb-3">{{ $product->name }}</h6>
                                     <div class="d-flex justify-content-center">
                                         <h6>{{ $product->price  }}</h6><h6 class="text-muted ml-2"><del>{{ $product->price + $product->discount }}</del></h6>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                <div class="card-footer d-flex justify-content-center bg-light border">
+                                    <a href="{{ route('website.cart', $product->id) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>{{ __('words.view_details') }}</a>
                                 </div>
                             </div>
                         @endforeach

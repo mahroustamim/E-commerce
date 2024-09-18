@@ -4,20 +4,37 @@ namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class CartController extends Controller
 {
     public function index($id) {
 
         $locale = app()->getLocale();
-        $product = Product::where('id', $id)
-            ->with('image')
-            ->select('id', "name_{$locale} as name", 'category_id', "desc_{$locale} as desc", "brand_{$locale} as brand", 'price', 'discount', 'quantity', 'status', 'colors', 'sizes')
-            ->first();
 
+        $product = Product::where('id', $id)
+        ->with('image')
+        ->select('id', "name_{$locale} as name", 'category_id', "desc_{$locale} as desc", "brand_{$locale} as brand", 'price', 'discount', 'quantity', 'status', 'colors', 'sizes')
+        ->first();
+    
+        // Paginate comments related to the product
+        $comments = Comment::where('product_id', $id)->with('user')->latest() ->paginate(3); 
+
+        // Get the average rating and count of ratings for the product
+        $averageRating = Rating::where('product_id', $id)->avg('rating');
+        $ratingCount = Rating::where('product_id', $id)->count();
+
+        // $userRated = auth()->check() ? Rating::where('user_id', auth()->id())->where('product_id', $id)->exists() : false;
+        if(auth()->check()) {
+            $userRated = Rating::where('user_id', auth()->id())->where('product_id', $id)->select('rating')->first();
+        } else {
+            $userRated = false;
+        }
 
         // Check if product exists before querying related products
         if ($product) {
@@ -29,7 +46,7 @@ class CartController extends Controller
             $related_products = collect(); // Return an empty collection if no product is found
         }
 
-        return view('website.cart', compact('product', 'related_products'));
+        return view('website.cart', compact('product', 'related_products', 'userRated', 'comments', 'averageRating', 'ratingCount'));
 
     }
 
@@ -114,6 +131,60 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', __('words.saveSucc'));
     
+    }
+
+
+    public function rating(Request $request) {
+        // Validate request data
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'rating' => 'required|in:1,2,3,4,5',
+        ]);
+
+        if(!auth()->check()) {
+            return redirect()->back();
+        }
+    
+        // Check if the user has already rated the product
+        $userId = auth()->id();
+        $productId = $request->product_id;
+    
+        $existingRating = Rating::where('user_id', $userId)
+            ->where('product_id', $productId)
+            ->first();
+    
+        // If no existing rating, create a new rating
+        if (!$existingRating) {
+            Rating::create([
+                'user_id' => $userId,
+                'product_id' => $productId,
+                'rating' => $request->rating,
+            ]);
+        }
+    
+        // Optionally, return a response
+        return redirect()->back()->with('success', __('words.saveSucc'));
+    }
+
+    public function comment(Request $request) {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'comment' => 'required|string',
+        ]);
+
+        if(!auth()->check()) {
+            return redirect()->back();
+        }
+
+        Comment::create([
+            'user_id' => auth()->id(),
+            'product_id' => $request->product_id,
+            'comment' => $request->comment,
+        ]);
+
+        // Optionally, return a response
+        return redirect()->back()->with('success', __('words.saveSucc'));
 
     }
+    
 }

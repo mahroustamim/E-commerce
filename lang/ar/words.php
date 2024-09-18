@@ -146,6 +146,14 @@ return [
     'send_message' => 'إرسال الرسالة',
     'sendSucc' => 'تم الارسال بنجاح',
     'contact_for_any_queries' => 'الاتصال للاستعلام عن اي إستفسار',
+    'view_details' => 'عرض التفاصيل',
+    'related_products' => 'منتجات ذات صلة',
+    'leave_review' => 'اترك مراجعة',
+    'your_rating' => 'تقييمك',
+    'login_to_rate' => 'سجل الدخول للتقييم',
+    'your_comment' => 'تعليقك',
+    'reviews' => 'المراجعات',
+
 
 
 

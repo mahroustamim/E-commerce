@@ -53,6 +53,12 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
 
     Route::post('/cart/add', [CartController::class, 'addCart'])->name('cart.add');
 
+    Route::post('/rating', [CartController::class, 'rating'])->name('rating');
+
+    Route::post('/comment', [CartController::class, 'comment'])->name('comment');
+
+
+
     Route::get('mahrous', function(Request $request) {
            
     });
