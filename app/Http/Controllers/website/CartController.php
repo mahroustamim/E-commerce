@@ -186,5 +186,53 @@ class CartController extends Controller
         return redirect()->back()->with('success', __('words.saveSucc'));
 
     }
+
+
+    public function shoppingCart(Request $request) {
+
+        // Initialize $carts as an empty collection to avoid errors if no carts are found
+        $carts = collect();
+    
+        if(auth()->check()) {
+            // Get carts for authenticated users
+            $carts = Cart::where('user_id', auth()->id())->get();
+    
+        } else {
+            // Get carts for unauthenticated users using cookie_id
+            $cookie_id = $request->cookie('cart_id');
+            if($cookie_id) {
+                $carts = Cart::where('cookie_id', $cookie_id)->get();
+            }
+        }
+        return view('website.shopping_cart', compact('carts'));
+    }
+
+    public function delete(Request $request, $id) {
+
+        Cart::where('id', $id)->delete();
+
+        if(!auth()->check()) {
+            $cookie_id = $request->cookie('cart_id');
+            if($cookie_id) {
+                cookie()->queue(cookie()->forget('cart_id'));
+            }
+        }
+
+        return response()->json(['success' => true, 'message' => __('words.saveSucc')]);
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'quantity' => 'string',
+        ]);
+        if($request->quantity == 0) {
+            return redirect()->back();
+        }
+        $cart = Cart::where('id', $id)->first();
+        $cart->quantity = $request->quantity;
+        $cart->save();
+        return response()->json(['success' => true, 'message' => __('words.saveSucc')]);
+    }
+    
     
 }

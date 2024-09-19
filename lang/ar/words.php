@@ -153,6 +153,14 @@ return [
     'login_to_rate' => 'سجل الدخول للتقييم',
     'your_comment' => 'تعليقك',
     'reviews' => 'المراجعات',
+    'cart_summary' => 'ملخص السلة',
+    'subtotal' => 'المجموع الجزئي',
+    'total' => 'الإجمالي',
+    'shipping' => 'الشحن',
+    'buy' => 'شراء',
+    'add_to_cart' => 'أضف إلى السلة',
+    'depend_on' => 'يعتمد على المحافظة',
+
 
 
 

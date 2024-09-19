@@ -27,30 +27,53 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     // This method is triggered after successful registration
-    protected function registered(Request $request, $user)
-    {
-        $this->mergeCarts($request, $user);
-    }
+protected function registered(Request $request, $user)
+{
+    $this->mergeCarts($request, $user);
+}
 
-    // Method to merge carts after registration
-    protected function mergeCarts(Request $request, $user)
-    {
-        $cookie_id = $request->cookie('cart_id');
+// Method to merge carts after registration
+protected function mergeCarts(Request $request, $user)
+{
+    $cookie_id = $request->cookie('cart_id');
 
+    if ($cookie_id) {
         // Retrieve unauthenticated cart items (based on cookie_id)
-        $carts = Cart::where('cookie_id', $cookie_id)->get();
+        $guestCartItems = Cart::where('cookie_id', $cookie_id)->get();
 
-        // Loop through the unauthenticated cart items
-        foreach ($carts as $cart) {
-            // Directly associate the item with the authenticated user by setting user_id
-            $cart->user_id = $user->id;
-            $cart->cookie_id = null;  // Remove the cookie_id since it's now associated with a user
-            $cart->save();
+        if ($guestCartItems->isNotEmpty()) {
+            // Retrieve authenticated user's cart items
+            $userCartItems = Cart::where('user_id', $user->id)->get();
+
+            // Loop through the unauthenticated cart items
+            foreach ($guestCartItems as $guestCartItem) {
+                // Check if the item already exists in the authenticated user's cart
+                $existingCartItem = $userCartItems->where('product_id', $guestCartItem->product_id)
+                    ->where('color', $guestCartItem->color)
+                    ->where('size', $guestCartItem->size)
+                    ->first();
+
+                if ($existingCartItem) {
+                    // If it exists, update the quantity
+                    $existingCartItem->quantity += $guestCartItem->quantity;
+                    $existingCartItem->save();
+                } else {
+                    // If it doesn't exist, assign the user_id to the guest cart item and save it
+                    $guestCartItem->user_id = $user->id;
+                    $guestCartItem->cookie_id = null;  // Remove the cookie_id since it's now associated with a user
+                    $guestCartItem->save();
+                }
+            }
+
+            // Delete guest cart items now merged
+            Cart::where('cookie_id', $cookie_id)->delete();
+
+            // Remove the cookie after merging the carts
+            cookie()->queue(cookie()->forget('cart_id'));
         }
-
-        // Optionally, delete the cart_cookie_id cookie
-        cookie()->queue(cookie()->forget('cart_id'));
     }
+}
+
 
     /**
      * Where to redirect users after registration.

@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>{{ $setting->name_en }}</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     @if (app()->getLocale() === 'en')
@@ -58,9 +60,9 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="{{ route('website.shopping_cart') }}" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">{{ $carts_count }}</span>
+                    <span class="badge carts_count">{{ $carts_count }}</span>
                 </a>
             </div>
         </div>
@@ -84,8 +86,10 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0" @if (app()->getLocale() === 'ar') dir="rtl" @endif>
 
-                            <a href="{{ route('website.home') }}" class="nav-item nav-link active">{{ __('words.home') }}</a>
-                            <a href="{{ route('website.categories') }}" class="nav-item nav-link">{{ __('words.categories') }}</a>
+                            <a href="{{ route('website.home') }}" class="nav-item nav-link {{ request()->routeIs('website.home') ? 'active' : '' }}">{{ __('words.home') }}</a>
+
+                            <a href="{{ route('website.categories') }}" class="nav-item nav-link {{ request()->routeIs('website.categories') ? 'active' : '' }}">{{ __('words.categories') }}</a>
+
                             {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -93,9 +97,9 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div> --}}
-                            <a href="{{ route('website.products') }}" class="nav-item nav-link">{{ __('words.products') }}</a>
-                            <a href="{{ route('website.about') }}" class="nav-item nav-link">{{ __('words.about') }}</a>
-                            <a href="{{ route('website.contact') }}" class="nav-item nav-link">{{ __('words.contact') }}</a>
+                            <a href="{{ route('website.products') }}" class="nav-item nav-link {{ request()->routeIs('website.products') ? 'active' : '' }}">{{ __('words.products') }}</a>
+                            <a href="{{ route('website.about') }}" class="nav-item nav-link {{ request()->routeIs('website.about') ? 'active' : '' }}">{{ __('words.about') }}</a>
+                            <a href="{{ route('website.contact') }}" class="nav-item nav-link {{ request()->routeIs('website.contact') ? 'active' : '' }}">{{ __('words.contact') }}</a>
 
                         </div>
                         @if (Auth::check())
