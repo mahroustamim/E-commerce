@@ -18,6 +18,9 @@ class AdminSeeder extends Seeder
             'email' => 'mahroustamim@gmail.com',
             'password' => Hash::make('12345678'),
             'status' => 'admin',
+            'email_verified_at' => now(),
+            'governotate_id' => 11,
+            'phone' => '01121665185',
         ]);
     }
 }

@@ -87,7 +87,7 @@
                             <h5 class="total-price font-weight-bold">0 <span></span></h5>
                         </div>
                         @if (auth()->check())
-                            <a class="btn btn-block btn-success my-3 py-3" href="">{{ __('words.buy') }}</a>
+                            <a class="btn btn-block btn-success my-3 py-3" href="{{ route('website.checkout') }}">{{ __('words.buy') }}</a>
                         @else
                             <a class="btn btn-block btn-success my-3 py-3" href="{{ route('login') }}">{{ __('words.buy') }}</a>
                         @endif

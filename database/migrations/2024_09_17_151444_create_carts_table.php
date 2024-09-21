@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');  // Reference to the product
             $table->unsignedBigInteger('user_id')->nullable();  // Nullable for unauthenticated users
             $table->uuid('cookie_id')->nullable();  // Nullable for unauthenticated users
-            $table->integer('quantity');
+            $table->unsignedSmallInteger('quantity');
             $table->string('color');
             $table->string('size');
             $table->timestamps();

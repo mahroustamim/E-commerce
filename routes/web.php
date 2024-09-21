@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\website\CartController;
 use App\Http\Controllers\website\IndexController;
+use App\Http\Controllers\website\OrderController;
 use App\Http\Controllers\website\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->group(function () {
+Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')->group(function () {
 
     Route::get('home', [IndexController::class, 'index'])->name('home');
 
@@ -63,8 +64,14 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website')->name('website.')->
 
     Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
+    Route::get('checkout', [OrderController::class, 'index'])->name('checkout');
+
+    Route::post('checkout', [OrderController::class, 'store'])->name('order.store');
+
+    Route::GET('delivery-price/{id}', [OrderController::class, 'deliveryPrice'])->name('deliveryPrice');
+
     Route::get('mahrous', function(Request $request) {
-           
+        
     });
 
 });

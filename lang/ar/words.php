@@ -160,6 +160,14 @@ return [
     'buy' => 'شراء',
     'add_to_cart' => 'أضف إلى السلة',
     'depend_on' => 'يعتمد على المحافظة',
+    'outOfStock' => 'إنتهى من المخزن',
+    'shipping_address' => 'عنوان الشحن',
+    'order_total' => 'إجمالي الطلب',
+    'payment' => 'الدفع',
+    'checkout' => 'إتمام الشراء',
+    'address' => 'العنوان',
+    'postal_code' => 'الرمز البريدي',
+
 
 
 
