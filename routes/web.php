@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\website\CartController;
 use App\Http\Controllers\website\IndexController;
 use App\Http\Controllers\website\OrderController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\website\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -68,7 +70,9 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')-
 
     Route::post('checkout', [OrderController::class, 'store'])->name('order.store');
 
-    Route::GET('delivery-price/{id}', [OrderController::class, 'deliveryPrice'])->name('deliveryPrice');
+    Route::get('delivery-price/{id}', [OrderController::class, 'deliveryPrice'])->name('deliveryPrice');
+
+    Route::get('set-locale/{locale}', [LocalizationController::class, 'setLocale']);
 
     Route::get('test', function(Request $request) {
     });

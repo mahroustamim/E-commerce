@@ -172,6 +172,7 @@ return [
     'back_to_shop' => 'العودة إلى المتجر',
     'quick_links' => 'الروابط السريعة',
     'shopping_cart' => 'سلة التسوق',
+    'language' => 'اللغة',
 
 
 

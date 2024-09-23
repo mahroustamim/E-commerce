@@ -172,7 +172,7 @@ return [
     'back_to_shop' => 'Back To Shop',
     'quick_links' => 'Quick Links',
     'shopping_cart' => 'Shopping Cart',
-    '' => '',
+    'language' => 'Language',
     '' => '',
     '' => '',
     '' => '',

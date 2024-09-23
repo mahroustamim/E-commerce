@@ -84,18 +84,21 @@
 
                             <a href="{{ route('website.home') }}" class="nav-item nav-link active">{{ __('words.home') }}</a>
                             <a href="{{ route('website.categories') }}" class="nav-item nav-link">{{ __('words.categories') }}</a>
-                            {{-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div> --}}
                             <a href="{{ route('website.products') }}" class="nav-item nav-link">{{ __('words.products') }}</a>
                             <a href="{{ route('website.about') }}" class="nav-item nav-link">{{ __('words.about') }}</a>
                             <a href="{{ route('website.contact') }}" class="nav-item nav-link">{{ __('words.contact') }}</a>
 
+                            <div class="navbar-nav ml-auto py-0 dropdown">
+                                <a  class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('words.language') }}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="set-locale/en" class="dropdown-item">English <img src="{{ asset('websiteAsset/img/american.webp') }}" class="mx-100 mr-3" style="width: 30px;"  alt=""></a>
+                                    <a href="set-locale/ar" class="dropdown-item">عربي <img src="{{ asset('websiteAsset/img/egypt.jpg') }}" class="mx-100 mr-3" style="width: 30px;" alt=""></a>
+                                </div>
+                            </div>
+
                         </div>
+
+
                         @if (Auth::check())
                             <div class="navbar-nav ml-auto py-0">
                                 <a href="{{ route('website.profile', auth()->user()->id) }}" class="nav-item nav-link">{{ auth()->user()->name }}</a>
@@ -106,6 +109,7 @@
                                 <a href="{{ route('register') }}" class="nav-item nav-link">{{ __('words.register') }}</a>
                             </div>
                         @endif
+                        
                     </div>
                 </nav>
 

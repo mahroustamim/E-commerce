@@ -171,51 +171,33 @@
       </p>
       <ul class="navbar-nav flex-fill w-100 mb-2">
 
+        
+        <li class="nav-item dropdown">
+          <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <i class="fe fe-file fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.language') }}</span>
+          </a>
+          <ul class="collapse list-unstyled pl-4 w-100 w-100" id="pages">
+            <li class="nav-item">
+              <a class="nav-link pl-3" href="set-locale/en">
+                <span class="ml-1 item-text">English</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pl-3" href="set-locale/ar">
+                <span class="ml-1 item-text">عربي</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fe fe-log-out fe-16"></i>
             <span class="ml-3 item-text">{{ __('words.logout') }}</span>
           </a>
         </li>
-        
-        <li class="nav-item dropdown">
-          <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-file fe-16"></i>
-            <span class="ml-3 item-text">Pages</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100 w-100" id="pages">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-orders.html">
-                <span class="ml-1 item-text">Orders</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-timeline.html">
-                <span class="ml-1 item-text">Timeline</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-invoice.html">
-                <span class="ml-1 item-text">Invoice</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-404.html">
-                <span class="ml-1 item-text">Page 404</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-500.html">
-                <span class="ml-1 item-text">Page 500</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./page-blank.html">
-                <span class="ml-1 item-text">Blank</span>
-              </a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item dropdown">
           <a href="#auth" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-shield fe-16"></i>
