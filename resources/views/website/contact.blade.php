@@ -57,7 +57,8 @@
                 <div class="col-lg-5 mb-5">
                     <div class="map_container" style="position: relative; overflow: hidden; padding-bottom: 56.25%; height: 0;">
                         <iframe 
-                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
+                            {{-- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" --}}
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=30.908986, 30.517881" 
                             width="600" 
                             height="450" 
                             frameborder="0" 

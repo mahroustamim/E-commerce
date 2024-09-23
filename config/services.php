@@ -25,10 +25,10 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
-    // 'stripe' => [
-    //     'Publishable key' => env('STRIPE_PUBLISHABLE_KEY'),
-    //     'Secret key' => env('STRIPE_SECRET_KEY'),
-    // ],
+    'stripe' => [
+        'Publishable key' => env('STRIPE_PUBLISHABLE_KEY'),
+        'Secret key' => env('STRIPE_SECRET_KEY'),
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
