@@ -110,7 +110,7 @@ return [
     'contact' => 'اتصل بنا',
     'about' => 'معلومات عنا',
     'qualityProduct' => 'منتج عالي الجودة',
-    'freeShipping' => 'شحن مجاني',
+    'FastDelivery' => 'شحن سريع',
     'securePayment' => 'دفع آمن',
     '24/7Support' => 'دعم 24/7',
     'reasonablePrice' => 'سعر معقول',
@@ -167,6 +167,11 @@ return [
     'checkout' => 'إتمام الشراء',
     'address' => 'العنوان',
     'postal_code' => 'الرمز البريدي',
+    'thank_you' => '!شكراً لك',
+    'order_completed' => '.تم إكمال طلبك بنجاح',
+    'back_to_shop' => 'العودة إلى المتجر',
+    'quick_links' => 'الروابط السريعة',
+    'shopping_cart' => 'سلة التسوق',
 
 
 

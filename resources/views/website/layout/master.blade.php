@@ -48,13 +48,14 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="{{ __('words.search') }}">
+                <form action="{{ route('website.products') }}" method="GET">
+                    @csrf
+                    <div class="input-group  mb-3">
+                        <input value="{{ isset($name) ? $name : '' }}" name="name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-Default">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                            <button class="btn btn-outline-secondary" type="submit">
+                                <i class="fa fa-search text-success"></i> <!-- This adds the search icon -->
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -149,27 +150,23 @@
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
             </div>
             <div class="col-md-6 col-lg-3 mb-5">
-                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                <h5 class="font-weight-bold text-dark mb-4">{{ __('words.quick_links') }}</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    <a class="text-dark mb-2" href="{{ route('website.home') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.home') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.products') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.showNow') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.about') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.about') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.contact') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.contact') }}</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-5">
-                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                <h5 class="font-weight-bold text-dark mb-4">{{ __('words.quick_links') }}</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.login') }}</a>
                     <a class="text-dark mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.register') }}</a>
                     @auth
-                    <a class="text-dark mb-2" href="{{ route('website.profile',  auth()->user()->id ) }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.profile') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.profile', auth()->user()->id) }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.profile') }}</a>
                     @endauth
-                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    <a class="text-dark mb-2" href="{{ __('shopping_cart') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.shopping_cart') }}</a>
                 </div>
             </div>
         </div>
@@ -190,7 +187,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-success back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

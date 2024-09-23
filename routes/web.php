@@ -70,8 +70,7 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')-
 
     Route::GET('delivery-price/{id}', [OrderController::class, 'deliveryPrice'])->name('deliveryPrice');
 
-    Route::get('mahrous', function(Request $request) {
-        
+    Route::get('test', function(Request $request) {
     });
 
 });

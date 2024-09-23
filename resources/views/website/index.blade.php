@@ -42,16 +42,18 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="{{ __('words.search') }}">
+                <form action="{{ route('website.products') }}" method="GET">
+                    @csrf
+                    <div class="input-group  mb-3">
+                        <input value="{{ isset($name) ? $name : '' }}" name="name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-Default">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                            <button class="btn btn-outline-secondary" type="submit">
+                                <i class="fa fa-search text-success"></i> <!-- This adds the search icon -->
+                            </button>
                         </div>
                     </div>
                 </form>
+                
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="{{ route('website.shopping_cart') }}" class="btn border">
@@ -114,7 +116,7 @@
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ __('words.fashionableProducts') }}</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">{{ __('words.showNow') }}</a>
+                                    <a href="{{ route('website.products') }}" class="btn btn-light py-2 px-3">{{ __('words.showNow') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +125,7 @@
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ __('words.reasonablePrice') }}</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">{{ __('words.showNow') }}</a>
+                                    <a href="{{ route('website.products') }}" class="btn btn-light py-2 px-3">{{ __('words.showNow') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +159,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                    <h5 class="font-weight-semi-bold m-0">{{ __('words.freeShipping') }}</h5>
+                    <h5 class="font-weight-semi-bold m-0">{{ __('words.FastDelivery') }}</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -216,7 +218,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{ $product->name }}</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>{{ $product->price }}</h6><h6 class="text-muted ml-2"><del>{{ $product->price + $product->discount }}</del></h6>
+                            <h6>{{ $product->price }} £ </h6><h6 class="text-muted ml-2"><del>{{ $product->price + $product->discount }}£</del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center bg-light border">
@@ -251,27 +253,23 @@
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>{{ $setting->phone }}</p>
             </div>
             <div class="col-md-6 col-lg-3 mb-5">
-                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                <h5 class="font-weight-bold text-dark mb-4">{{ __('words.quick_links') }}</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    <a class="text-dark mb-2" href="{{ route('website.home') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.home') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.products') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.showNow') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.about') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.about') }}</a>
+                    <a class="text-dark mb-2" href="{{ route('website.contact') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.contact') }}</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 mb-5">
-                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                <h5 class="font-weight-bold text-dark mb-4">{{ __('words.quick_links') }}</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.login') }}</a>
                     <a class="text-dark mb-2" href="{{ route('register') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.register') }}</a>
                     @auth
                     <a class="text-dark mb-2" href="{{ route('website.profile', auth()->user()->id) }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.profile') }}</a>
                     @endauth
-                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    <a class="text-dark mb-2" href="{{ __('shopping_cart') }}"><i class="fa fa-angle-right mr-2"></i>{{ __('words.shopping_cart') }}</a>
                 </div>
             </div>
         </div>
@@ -292,7 +290,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-success back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

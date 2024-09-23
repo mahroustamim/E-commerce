@@ -101,7 +101,7 @@ class OrderController extends Controller
 
     Cart::where('user_id', auth()->id())->delete();
 
-    return redirect()->route('website.home')->with('success', __('words.saveSucc'));
+    return redirect()->view('website.order_completed')->with('success', __('words.saveSucc'));
 }
     
 
