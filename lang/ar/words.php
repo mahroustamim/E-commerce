@@ -173,6 +173,15 @@ return [
     'quick_links' => 'الروابط السريعة',
     'shopping_cart' => 'سلة التسوق',
     'language' => 'اللغة',
+    'pending' => 'قيد الانتظار',
+    'delivering' => 'جار التوصيل',
+    'completed' => 'مكتمل',
+    'paid' => 'مدفوع',
+    'failed' => 'فشل',
+    'payment_status' => 'حالة الدفع',
+    'order_number' => 'رقم الطلب',
+    'count' => 'العدد',
+
 
 
 

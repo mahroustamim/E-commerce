@@ -30,34 +30,20 @@
         <li class="nav-item dropdown">
           <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-box fe-16"></i>
-            <span class="ml-3 item-text">UI elements</span>
+            <span class="ml-3 item-text">{{ __('words.orders') }}</span>
           </a>
           <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
             <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">Colors</span>
+              <a class="nav-link pl-3" href="{{ route('dashboard.orders.pending') }}"><span class="ml-1 item-text">{{ __('words.pending') }}</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-typograpy.html"><span class="ml-1 item-text">Typograpy</span></a>
+              <a class="nav-link pl-3" href="{{ route('dashboard.orders.delivering') }}"><span class="ml-1 item-text">{{ __('words.delivering') }}</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">Icons</span></a>
+              <a class="nav-link pl-3" href="{{ route('dashboard.orders.completed') }}"><span class="ml-1 item-text">{{ __('words.completed') }}</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-buttons.html"><span class="ml-1 item-text">Buttons</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-notification.html"><span class="ml-1 item-text">Notifications</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-modals.html"><span class="ml-1 item-text">Modals</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-tabs-accordion.html"><span class="ml-1 item-text">Tabs & Accordion</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-progress.html"><span class="ml-1 item-text">Progress</span></a>
-            </li>
+            
           </ul>
         </li>
         <li class="nav-item w-100">
@@ -88,18 +74,6 @@
           </a>
         </li>
         <li class="nav-item w-100">
-          <a class="nav-link" href="{{ route('website.home') }}" target="_blank">
-            <i class="fe fe-shopping-bag fe-16"></i>
-            <span class="ml-3 item-text">{{ __('words.website') }}</span>
-          </a>
-        </li>
-        <li class="nav-item w-100">
-          <a class="nav-link" href="http://localhost/projects/E-commerce/public/logs">
-            <i class="fe fe-alert-triangle fe-16"></i>
-            <span class="ml-3 item-text">{{ __('words.logs') }}</span>
-          </a>
-        </li>
-        <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.setting') }}">
             <i class="fe fe-settings fe-16"></i>
             <span class="ml-3 item-text">{{ __('words.settings') }}</span>
@@ -119,52 +93,21 @@
             <span class="ml-3 item-text">{{ __('words.profile') }}</span>
           </a>
         </li>
+
+        <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('website.home') }}" target="_blank">
+            <i class="fe fe-shopping-bag fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.website') }}</span>
+          </a>
+        </li>
+        <li class="nav-item w-100">
+          <a class="nav-link" href="http://localhost/projects/E-commerce/public/logs">
+            <i class="fe fe-alert-triangle fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.logs') }}</span>
+          </a>
+        </li>
         
-        <li class="nav-item dropdown">
-          <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-book fe-16"></i>
-            <span class="ml-3 item-text">Contacts</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-            <a class="nav-link pl-3" href="./contacts-list.html"><span class="ml-1">Contact List</span></a>
-            <a class="nav-link pl-3" href="./contacts-grid.html"><span class="ml-1">Contact Grid</span></a>
-            <a class="nav-link pl-3" href="./contacts-new.html"><span class="ml-1">New Contact</span></a>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-user fe-16"></i>
-            <span class="ml-3 item-text">Profile</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-            <a class="nav-link pl-3" href="./profile.html"><span class="ml-1">Overview</span></a>
-            <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Settings</span></a>
-            <a class="nav-link pl-3" href="./profile-security.html"><span class="ml-1">Security</span></a>
-            <a class="nav-link pl-3" href="./profile-notification.html"><span class="ml-1">Notifications</span></a>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-folder fe-16"></i>
-            <span class="ml-3 item-text">File Manager</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="fileman">
-            <a class="nav-link pl-3" href="./files-list.html"><span class="ml-1">Files List</span></a>
-            <a class="nav-link pl-3" href="./files-grid.html"><span class="ml-1">Files Grid</span></a>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-compass fe-16"></i>
-            <span class="ml-3 item-text">Help Desk</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="support">
-            <a class="nav-link pl-3" href="./support-center.html"><span class="ml-1">Home</span></a>
-            <a class="nav-link pl-3" href="./support-tickets.html"><span class="ml-1">Tickets</span></a>
-            <a class="nav-link pl-3" href="./support-ticket-detail.html"><span class="ml-1">Ticket Detail</span></a>
-            <a class="nav-link pl-3" href="./support-faqs.html"><span class="ml-1">FAQs</span></a>
-          </ul>
-        </li>
+
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
         <span>Extra</span>
@@ -179,12 +122,12 @@
           </a>
           <ul class="collapse list-unstyled pl-4 w-100 w-100" id="pages">
             <li class="nav-item">
-              <a class="nav-link pl-3" href="set-locale/en">
+              <a class="nav-link pl-3" href="{{ url('dashboard/set-locale/en') }}">
                 <span class="ml-1 item-text">English</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pl-3" href="set-locale/ar">
+              <a class="nav-link pl-3" href="{{ url('dashboard/set-locale/ar') }}">
                 <span class="ml-1 item-text">عربي</span>
               </a>
             </li>
@@ -198,52 +141,6 @@
           </a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="#auth" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-shield fe-16"></i>
-            <span class="ml-3 item-text">Authentication</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="auth">
-            <a class="nav-link pl-3" href="./auth-login.html"><span class="ml-1">Login 1</span></a>
-            <a class="nav-link pl-3" href="./auth-login-half.html"><span class="ml-1">Login 2</span></a>
-            <a class="nav-link pl-3" href="./auth-register.html"><span class="ml-1">Register</span></a>
-            <a class="nav-link pl-3" href="./auth-resetpw.html"><span class="ml-1">Reset Password</span></a>
-            <a class="nav-link pl-3" href="./auth-confirm.html"><span class="ml-1">Confirm Password</span></a>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#layouts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-layout fe-16"></i>
-            <span class="ml-3 item-text">Layout</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="layouts">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./index-horizontal.html"><span class="ml-1 item-text">Top Navigation</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./index-boxed.html"><span class="ml-1 item-text">Boxed</span></a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p class="text-muted nav-heading mt-4 mb-1">
-        <span>Documentation</span>
-      </p>
-      <ul class="navbar-nav flex-fill w-100 mb-2">
-        <li class="nav-item w-100">
-          <a class="nav-link" href="../docs/index.html">
-            <i class="fe fe-help-circle fe-16"></i>
-            <span class="ml-3 item-text">Getting Start</span>
-          </a>
-        </li>
-      </ul>
-      <div class="btn-box w-100 mt-4 mb-1">
-        <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
-          <i class="fe fe-shopping-cart fe-12 mr-2"></i><span class="small">Buy now</span>
-        </a>
-      </div>
+
     </nav>
   </aside>

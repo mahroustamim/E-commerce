@@ -131,7 +131,7 @@ return [
     'did_not_receive_email' => 'If you did not receive the email',
     'click_here_to_request_another' => 'Click here to request another',
     'governorate' => 'Governorate',
-    'governorate' => 'Governorates',
+    'governorates' => 'Governorates',
     'pages' => 'pages',
     'all' => 'All',
     'filter_by_price' => 'Filter By Price',
@@ -173,6 +173,15 @@ return [
     'quick_links' => 'Quick Links',
     'shopping_cart' => 'Shopping Cart',
     'language' => 'Language',
+    'pending' => 'pending',
+    'delivering' => 'delivering',
+    'completed' => 'completed',
+    'paid' => 'paid',
+    'failed' => 'failed',
+    'payment_status' => 'Payment Status',
+    'order_number' => 'Order Number',
+    'count' => 'Count',
+    'orders' => 'Orders',
     '' => '',
     '' => '',
     '' => '',
@@ -181,6 +190,10 @@ return [
     '' => '',
     '' => '',
     '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+
 
 
 
