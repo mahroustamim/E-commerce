@@ -31,10 +31,10 @@
 
   <div class="row">
     <div class="col-md-12 my-4">
-      <p class="mb-3">{{ __('words.count') . ': ' . $orders->count() }}</p>
+      <p class="mb-3">{{ __('words.count') . ': ' . $users->count() }}</p>
       <div class="card shadow">
         <div class="card-body">
-          <form action="{{ route('dashboard.orders.pending') }}">
+          <form action="{{ route('dashboard.users') }}">
             <div class="input-group col-6 mb-3">
               <input type="text" class="form-control" value="{{ isset($search) ? $search : '' }}" name="search" aria-label="Default" aria-describedby="inputGroup-sizing-default">
               <div class="input-group-prepend">
@@ -49,38 +49,26 @@
             <thead class="thead-dark">
               <tr>
                 <th>#</th>
-                <th>{{ __('words.order_number') }}</th>
                 <th>{{ __('words.name') }}</th>
+                <th>{{ __('words.email') }}</th>
                 <th>{{ __('words.governorate') }}</th>
                 <th>{{ __('words.phone') }}</th>
-                <th>{{ __('words.total') }}</th>
-                <th>{{ __('words.payment_status') }}</th>
-                <th>{{ __('words.payment') }}</th>
-                <th>{{ __('words.status') }}</th>
-                <th>{{ __('words.action') }}</th>
+                <th>{{ __('words.money') }}</th>
+                <th>{{ __('words.orders') }}</th>
               </tr>
             </thead>
 
             <tbody>
 
-              @foreach ($orders as $order)
+              @foreach ($users as $user)
               <tr class="accordion-toggle collapsed" id="c-2474" data-toggle="collapse" data-parent="#c-2474" href="#collap-2474">
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $order->number }}</td>
-                <td>{{ $order->address->name }}</td>
-                <td>{{ $order->address->governorate->{'governorate_' . app()->getLocale()} }}</td>
-                <td>{{ $order->address->phone }}</td>
-                <td>{{ $order->total_price }} <span>&pound;</span></td>
-                <td>{{ __('words.' . $order->payment_status) }}</td>
-                <td>{{ $order->payment_method }}</td>
-                <td>{{ __('words.' . $order->status) }}</td>
-                <td>
-                  <form action="{{ route('dashboard.orders.status', $order->id) }}" method="POST">
-                    @csrf
-                    <input name="status" type="hidden" value="completed">
-                    <input type="submit" value="{{ __('words.completed') }}" class="btn btn-outline-success ">
-                  </form>
-                </td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->governorate->{'governorate_' . app()->getLocale()} }}</td>
+                <td>{{ $user->phone }}</td>
+                <td>{{ $user->orders_sum_total_price }} <span>&pound;</span></td>
+                <td>{{ $user->orders_count }}</td>
               </tr>
               @endforeach
 
@@ -94,7 +82,7 @@
 
       <!-- Render pagination links -->
       <div class="d-flex justify-content-center">
-        {!! $orders->links() !!}
+        {!! $users->links() !!}
     </div>
   
   

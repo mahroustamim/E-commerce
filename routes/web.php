@@ -5,9 +5,11 @@ use App\Http\Controllers\website\CartController;
 use App\Http\Controllers\website\IndexController;
 use App\Http\Controllers\website\OrderController;
 use App\Http\Controllers\website\ProfileController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -38,7 +40,7 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')-
 
     Route::get('home', [IndexController::class, 'index'])->name('home');
 
-    Route::get('profile{id}', [ProfileController::class, 'index'])->name('profile');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     
     Route::post('profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
 

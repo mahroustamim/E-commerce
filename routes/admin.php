@@ -5,6 +5,7 @@ use App\Http\Controllers\dashboard\IndexController;
 use App\Http\Controllers\dashboard\OrderController;
 use App\Http\Controllers\dashboard\ProductController;
 use App\Http\Controllers\dashboard\SettingController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,5 @@ Route::get('orders/delivering', [OrderController::class, 'delivering'])->name('o
 Route::get('orders/completed', [OrderController::class, 'completed'])->name('orders.completed');
 
 Route::post('orders/status/{id}', [OrderController::class, 'changeStatus'])->name('orders.status');
+
+Route::get('users', [UserController::class, 'index'])->name('users');

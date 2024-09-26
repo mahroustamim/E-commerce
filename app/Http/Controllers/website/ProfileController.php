@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index($id) {
+    public function index() {
+
+        $id = auth()->id();
 
         $locale = app()->getLocale();
         $user = User::find($id);

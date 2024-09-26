@@ -62,4 +62,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function governorate() {
         return $this->belongsTo(Governorate::class, 'governorate_id', 'id');
     }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -101,7 +101,7 @@
 
                         @if (Auth::check())
                             <div class="navbar-nav ml-auto py-0">
-                                <a href="{{ route('website.profile', auth()->user()->id) }}" class="nav-item nav-link">{{ auth()->user()->name }}</a>
+                                <a href="{{ route('website.profile') }}" class="nav-item nav-link">{{ auth()->user()->name }}</a>
                             </div>
                         @else
                             <div class="navbar-nav ml-auto py-0">
