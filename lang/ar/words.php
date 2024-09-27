@@ -181,6 +181,11 @@ return [
     'payment_status' => 'حالة الدفع',
     'order_number' => 'رقم الطلب',
     'count' => 'العدد',
+    'orders' => 'الطلبات',
+    'money' => 'المال',
+    'supervisor' => 'مشرف',
+    'supervisors' => 'المشرفيين',
+
 
 
 

@@ -41,4 +41,20 @@ Route::get('orders/completed', [OrderController::class, 'completed'])->name('ord
 
 Route::post('orders/status/{id}', [OrderController::class, 'changeStatus'])->name('orders.status');
 
-Route::get('users', [UserController::class, 'index'])->name('users');
+Route::get('users', [UserController::class, 'getUsers'])->name('users');
+
+Route::get('supervisors', [UserController::class, 'getSupervisor'])->name('supervisors');
+
+Route::get('supervisors/create', [UserController::class, 'create'])->name('supervisors.create');
+
+Route::post('supervisors/store', [UserController::class, 'store'])->name('supervisors.store');
+
+Route::get('supervisors/edit/{id}', [UserController::class, 'edit'])->name('supervisors.edit');
+
+Route::post('supervisors/update/{id}', [UserController::class, 'update'])->name('supervisors.update');
+
+Route::post('supervisors/delete', [UserController::class, 'delete'])->name('supervisors.delete');
+
+
+
+

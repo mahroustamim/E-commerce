@@ -182,9 +182,10 @@ return [
     'order_number' => 'Order Number',
     'count' => 'Count',
     'orders' => 'Orders',
-    '' => '',
-    '' => '',
-    '' => '',
+    'money' => 'Money',
+
+    'supervisor' => 'Supervisor',
+    'supervisors' => 'Supervisors',
     '' => '',
     '' => '',
     '' => '',
