@@ -60,20 +60,22 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a href="#supervisors" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-user-check fe-16"></i>
-            <span class="ml-3 item-text">{{ __('words.supervisors') }}</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="supervisors">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="{{ route('dashboard.supervisors') }}"><span class="ml-1 item-text">{{ __('words.supervisors') }}</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="{{ route('dashboard.supervisors.create') }}"><span class="ml-1 item-text">{{ __('words.add') }} {{ __('words.supervisor') }}</span></a>
-            </li>
-          </ul>
-        </li>
+        @can('is_admin')          
+          <li class="nav-item dropdown">
+            <a href="#supervisors" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+              <i class="fe fe-user-check fe-16"></i>
+              <span class="ml-3 item-text">{{ __('words.supervisors') }}</span>
+            </a>
+            <ul class="collapse list-unstyled pl-4 w-100" id="supervisors">
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('dashboard.supervisors') }}"><span class="ml-1 item-text">{{ __('words.supervisors') }}</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('dashboard.supervisors.create') }}"><span class="ml-1 item-text">{{ __('words.add') }} {{ __('words.supervisor') }}</span></a>
+              </li>
+            </ul>
+          </li>
+        @endcan
         <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.users') }}">
             <i class="fe fe-users fe-16"></i>
@@ -86,12 +88,14 @@
             <span class="ml-3 item-text">{{ __('words.categories') }}</span>
           </a>
         </li>
-        <li class="nav-item w-100">
-          <a class="nav-link" href="{{ route('dashboard.setting') }}">
-            <i class="fe fe-settings fe-16"></i>
-            <span class="ml-3 item-text">{{ __('words.settings') }}</span>
-          </a>
-        </li>
+        @can('is_admin')
+          <li class="nav-item w-100">
+            <a class="nav-link" href="{{ route('dashboard.setting') }}">
+              <i class="fe fe-settings fe-16"></i>
+              <span class="ml-3 item-text">{{ __('words.settings') }}</span>
+            </a>
+          </li>
+        @endcan
 
       
       </ul>

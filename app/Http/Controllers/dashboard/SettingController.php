@@ -10,10 +10,12 @@ use Illuminate\Support\Str;
 class SettingController extends Controller
 {
     public function index() {
+        $this->authorize('is_admin');
         return view('dashboard.setting');
     }
 
     public function updateOrCreate(Request $request) {
+        $this->authorize('is_admin');
         $request->validate([
             'logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'favicon' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',

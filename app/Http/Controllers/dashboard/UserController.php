@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Governorate;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -14,6 +15,7 @@ class UserController extends Controller
     }
 
     public function getSupervisor(Request $request) {
+        $this->authorize('is_admin');
         return $this->getRoleByStatus('supervisor', $request);
     }
 
@@ -49,6 +51,7 @@ class UserController extends Controller
     }
 
     public function create() {
+        $this->authorize('is_admin');
         $locale = app()->getLocale();
 
         $governorates = Governorate::select('id', "governorate_{$locale} as name")->get();
@@ -57,6 +60,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
+        $this->authorize('is_admin');
         
         $request->validate([
             'name' => 'required|string|max:255',
@@ -80,6 +84,7 @@ class UserController extends Controller
     }
 
     public function edit($id) {
+        $this->authorize('is_admin');
 
         $locale = app()->getLocale();
 
@@ -91,6 +96,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $this->authorize('is_admin');
 
         // Validation
         $validator = $request->validate([
@@ -130,6 +136,8 @@ class UserController extends Controller
     }
 
     public function delete(Request $request) {
+        $this->authorize('is_admin');
+
         User::find($request->id)->delete();
 
         return redirect()->back()->with('success', __('words.deleteSucc'));
