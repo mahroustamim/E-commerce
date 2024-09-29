@@ -189,9 +189,9 @@ return [
     'total_products' => 'Total Products',
     'avg_orders' => 'AVG Orders',
     'latest_orders' => 'Latest Orders',
-    '' => '',
-    '' => '',
-    '' => '',
+    'main' => 'Main',
+    'extra' => 'Extra',
+    'reports' => 'Reports',
     '' => '',
 
 

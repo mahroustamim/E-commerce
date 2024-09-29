@@ -4,6 +4,7 @@ use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\IndexController;
 use App\Http\Controllers\dashboard\OrderController;
 use App\Http\Controllers\dashboard\ProductController;
+use App\Http\Controllers\dashboard\ReportsController;
 use App\Http\Controllers\dashboard\SettingController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\LocalizationController;
@@ -54,6 +55,8 @@ Route::get('supervisors/edit/{id}', [UserController::class, 'edit'])->name('supe
 Route::post('supervisors/update/{id}', [UserController::class, 'update'])->name('supervisors.update');
 
 Route::post('supervisors/delete', [UserController::class, 'delete'])->name('supervisors.delete');
+
+Route::get('reports', [ReportsController::class, 'index'])->name('reports');
 
 
 

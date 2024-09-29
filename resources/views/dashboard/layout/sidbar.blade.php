@@ -24,7 +24,7 @@
         </li>
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
-        <span>Components</span>
+        <span>{{ __('words.main') }}</span>
       </p>
       <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
@@ -83,6 +83,12 @@
           </a>
         </li>
         <li class="nav-item w-100">
+          <a class="nav-link" href="{{ route('dashboard.reports') }}">
+            <i class="fe fe-trello fe-16"></i>
+            <span class="ml-3 item-text">{{ __('words.reports') }}</span>
+          </a>
+        </li>
+        <li class="nav-item w-100">
           <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
             <i class="fe fe-grid fe-16"></i>
             <span class="ml-3 item-text">{{ __('words.categories') }}</span>
@@ -127,7 +133,7 @@
 
       </ul>
       <p class="text-muted nav-heading mt-4 mb-1">
-        <span>Extra</span>
+        <span>{{ __('words.extra') }}</span>
       </p>
       <ul class="navbar-nav flex-fill w-100 mb-2">
 

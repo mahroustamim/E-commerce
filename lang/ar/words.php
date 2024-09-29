@@ -189,6 +189,10 @@ return [
     'total_products' => 'إجمالي المنتجات',
     'avg_orders' => 'متوسط الطلبات',
     'latest_orders' => 'أحدث الطلبات',
+    'main' => 'الرئيسي',
+    'extra' => 'إضافي',
+    'reports' => 'التقارير',
+
 
 
 
