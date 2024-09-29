@@ -8,7 +8,9 @@ use App\Http\Controllers\website\ProfileController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -77,6 +79,17 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')-
     Route::get('set-locale/{locale}', [LocalizationController::class, 'setLocale']);
 
     Route::get('test', function(Request $request) {
+        $executed = RateLimiter::attempt(
+            'send-message:'. auth()->id(),
+            $perMinute = 5,
+            function() {
+                echo 'try';
+            }
+        );
+         
+        if (! $executed) {
+          return 'Too many messages sent!';
+        }
     });
 
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() == 'ar' ? 'ar' : 'en' }}">
 
 <head>
     <meta charset="utf-8">
@@ -90,17 +90,17 @@
                             <a href="{{ route('website.home') }}" class="nav-item nav-link {{ request()->routeIs('website.home') ? 'active' : '' }}">{{ __('words.home') }}</a>
 
                             <a href="{{ route('website.categories') }}" class="nav-item nav-link {{ request()->routeIs('website.categories') ? 'active' : '' }}">{{ __('words.categories') }}</a>
-
-                            {{-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div> --}}
                             <a href="{{ route('website.products') }}" class="nav-item nav-link {{ request()->routeIs('website.products') ? 'active' : '' }}">{{ __('words.products') }}</a>
                             <a href="{{ route('website.about') }}" class="nav-item nav-link {{ request()->routeIs('website.about') ? 'active' : '' }}">{{ __('words.about') }}</a>
                             <a href="{{ route('website.contact') }}" class="nav-item nav-link {{ request()->routeIs('website.contact') ? 'active' : '' }}">{{ __('words.contact') }}</a>
+
+                            <div class="navbar-nav ml-auto py-0 dropdown">
+                                <a  class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('words.language') }}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{{ url('website/set-locale/en') }}" class="dropdown-item">English <img src="{{ asset('websiteAsset/img/american.webp') }}" class="mx-100 mr-3" style="width: 30px;"  alt=""></a>
+                                    <a href="{{ url('website/set-locale/ar') }}" class="dropdown-item">عربي <img src="{{ asset('websiteAsset/img/egypt.jpg') }}" class="mx-100 mr-3" style="width: 30px;" alt=""></a>
+                                </div>
+                            </div>
 
                         </div>
                         @if (Auth::check())
@@ -126,9 +126,8 @@
 
 
 
+    @yield('content')
 
-
-@yield('content')
 
 
 
