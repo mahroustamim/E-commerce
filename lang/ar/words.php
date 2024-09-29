@@ -185,6 +185,11 @@ return [
     'money' => 'المال',
     'supervisor' => 'مشرف',
     'supervisors' => 'المشرفيين',
+    'total_sales' => 'إجمالي المبيعات',
+    'total_products' => 'إجمالي المنتجات',
+    'avg_orders' => 'متوسط الطلبات',
+    'latest_orders' => 'أحدث الطلبات',
+
 
 
 
