@@ -38,7 +38,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')->group(function () {
+Route::middleware(['checkVerifiedEmail', 'throttle:website'])->prefix('website/')->name('website.')->group(function () {
 
     Route::get('home', [IndexController::class, 'index'])->name('home');
 
@@ -79,17 +79,6 @@ Route::middleware(['checkVerifiedEmail'])->prefix('website/')->name('website.')-
     Route::get('set-locale/{locale}', [LocalizationController::class, 'setLocale']);
 
     Route::get('test', function(Request $request) {
-        $executed = RateLimiter::attempt(
-            'send-message:'. auth()->id(),
-            $perMinute = 5,
-            function() {
-                echo 'try';
-            }
-        );
-         
-        if (! $executed) {
-          return 'Too many messages sent!';
-        }
     });
 
 });
