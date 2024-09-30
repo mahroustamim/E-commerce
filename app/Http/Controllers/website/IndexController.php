@@ -156,7 +156,7 @@ class IndexController extends Controller
             'message' => $request->input('message'),
         ];
 
-        Mail::to('mahroustamim@gmail.com')->queue(new ContactMail($contactData));
+        Mail::to("mahroustamim@gmail.com")->queue(new ContactMail($contactData));
         return redirect()->back()->with('success', __('words.sendSucc') );
     }
 
