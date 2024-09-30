@@ -43,8 +43,27 @@ class OrderController extends Controller
             'stripeToken' => 'required', // Validate that stripe token is present
         ]);
 
-        // Calculate total price
+        
         $carts = Cart::where('user_id', auth()->id())->get();
+
+        // check quantity
+        foreach($carts as $cart) {
+            if($cart->quantity <= $cart->product->quantity) {
+                // Decrease product stock
+                $cart->product->quantity -= $cart->quantity;
+
+                // Update product status if necessary
+                if ($cart->product->quantity == 0) {
+                    $cart->product->status = 'unavailable';
+                }
+                $cart->product->save();
+            } else {
+                return redirect()->back()->with('error', __('words.outOfStock'));
+            }
+
+        }
+
+        // Calculate total price
         $total_price = $request->shipping;
         foreach($carts as $cart) {
             $total_price += $cart->product->price * $cart->quantity;
@@ -84,9 +103,6 @@ class OrderController extends Controller
                 'size' => $cart->size,
             ]);
 
-            // Decrease product stock
-            $cart->product->quantity -= $cart->quantity;
-            $cart->product->save();
         }
 
         OrderAddress::create([
