@@ -1,66 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## About the Project
+This e-commerce platform allows users to browse products, place orders, and make secure payments. The platform supports multiple product categories, payment gateways, and an intuitive user experience for both shoppers and administrators.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**website home page**
+![Alt text](https://github.com/mahroustamim/E-commerce/blob/main/website-home.png)
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**dashboard home page**
+![Alt text](https://github.com/mahroustamim/E-commerce/blob/main/dashboard-home.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features Overview
+- Product Management: Add, edit, and delete products with categories .
+- Category Management: Add, edit, and delete.
+- Supervisor management: Add, edit, and delete.
+- Settings Management: Change website name, description, logo, and favicon.
+- Social Media Control: Manage email, Facebook, Instagram, and Twitter links.
+- Logs & Reports: View logs and reports of user activity on the website.
+- Order Management: Control the status of orders (pending - delivering -completed)
+- Multi-Language Support: Easily switch between different languages (Engilsh - arabic).
+- User Authentication: Secure login and registration using Laravel's built-in authentication.
+- Payment Gateway Integration: Accept payments via Stripe.
+- Responsive Design: Mobile-friendly layout for a seamless experience across devices.
+- Product Search with Filters: Users can search and filter products.
+- Contact Us Page: Allow users to get in touch for any issues.
+- Rating System: Allow users to rate products on a scale (e.g., 1 to 5 stars).
+- Comment System: Allows users to ask questions or share their opinions, creating a sense of community around products.
+- Website pages: home, about, contact, categories, products, cart, shopping cart, checkout, login, and register page
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tech Stack
+- Backend: php 8.3 (Laravel 10 framework)
+- Frontend: Blade templates, JS, CSS, Bootstrap
+- Database: MySQL
+- Payment Integration: Stripe API
+- Email Service: mailtrap for sending transactional emails
+- Environment: Ubuntu for development and deployment
+  
+## installation 
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```
+$ git clone https://github.com/mahroustamim/E-commerce.git
+$ cd E-commerce
+$ composer install
+$ cp .env.example .env # THEN EDIT YOUR ENV FILE ACCORDING TO YOUR OWN SETTINGS.
+$ php artisan key:generate
+$ php artisan migrate
+$ php artisan db:seed
+$ php artisan serve
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Configuration
+- Database: Set the connection details for MySQL.
+- Stripe: Add your Stripe API keys (STRIPE_KEY, STRIPE_SECRET).
+- Email: Configure your email service (e.g., Mailtrap or your preferred provider)
+- Time Zone: Adjust the timezone to Africa/Cairo if needed.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Usage
+- Admin: Has full permissions, including managing products, orders, users, and settings.
+- Supervisor: Has all permissions except adding supervisors and viewing users.
+- User: Can browse products and place orders.
 
 ## Contributing
+Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request. Make sure to follow coding standards and provide thorough testing.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Fork the repository.
+- Create a new feature branch: git checkout -b feature/your-feature-name.
+- Commit your changes: git commit -m 'Add some feature'.
+- Push the branch: git push origin feature/your-feature-name.
+- Open a pull request.
 
-## Code of Conduct
+## database schema
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![Alt text](https://github.com/mahroustamim/E-commerce/blob/main/database.png)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+this project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Contact
+For any queries or issues:
+
+- Name: Mahrous Tamim
+- Email: mahroustamim@example.com
+- phone: 01121665185
+
+
+
+
+
+
+
