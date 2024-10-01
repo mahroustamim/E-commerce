@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\ShareCartCount::class,
             \App\Http\Middleware\LocaleMiddleware::class,
+            \App\Http\Middleware\ForceHttps::class,
         ],
 
         'api' => [
