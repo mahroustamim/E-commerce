@@ -33,9 +33,12 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('auth.login');
-})->middleware('guest');
+// Route::get('/', function () {
+//     return view('auth.login');
+// })->middleware('guest');
+
+// when user logout go to website-home
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
 Route::middleware(['checkVerifiedEmail', 'throttle:website'])->prefix('website/')->name('website.')->group(function () {
