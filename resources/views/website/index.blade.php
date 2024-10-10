@@ -91,8 +91,8 @@
                             <div class="navbar-nav ml-auto py-0 dropdown">
                                 <a  class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('words.language') }}</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="set-locale/en" class="dropdown-item">English <img src="{{ asset('websiteAsset/img/american.webp') }}" class="mx-100 mr-3" style="width: 30px;"  alt=""></a>
-                                    <a href="set-locale/ar" class="dropdown-item">عربي <img src="{{ asset('websiteAsset/img/egypt.jpg') }}" class="mx-100 mr-3" style="width: 30px;" alt=""></a>
+                                    <a href="{{ route('website.set-locale', 'en') }}" class="dropdown-item">English <img src="{{ asset('websiteAsset/img/american.webp') }}" class="mx-100 mr-3" style="width: 30px;"  alt=""></a>
+                                    <a href="{{ route('website.set-locale', 'ar') }}" class="dropdown-item">عربي <img src="{{ asset('websiteAsset/img/egypt.jpg') }}" class="mx-100 mr-3" style="width: 30px;" alt=""></a>
                                 </div>
                             </div>
 

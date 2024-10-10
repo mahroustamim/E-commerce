@@ -79,7 +79,7 @@ Route::middleware(['checkVerifiedEmail', 'throttle:website'])->prefix('website/'
 
     Route::get('delivery-price/{id}', [OrderController::class, 'deliveryPrice'])->name('deliveryPrice');
 
-    Route::get('set-locale/{locale}', [LocalizationController::class, 'setLocale']);
+    Route::get('set-locale/{locale}', [LocalizationController::class, 'setLocale'])->name('set-locale');
 
     Route::get('test', function(Request $request) {
     });
